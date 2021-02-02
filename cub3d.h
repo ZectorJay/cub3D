@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 07:09:24 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/02 11:55:03 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 
-# define	COLUMN_HEIGHT		6
+# define	COLUMN_HEIGHT		5
 # define	RES_X				both->mlx.res_x
 # define	RES_Y 				both->mlx.res_y
 # define	HRES_Y 				both->mlx.half_res_y
-# define	MINI_MAP_SCALE		90
+# define	MINI_MAP_SCALE		120
 # define	PLAYER_SCALE		(int)(MINI_MAP_SCALE/3)
 # define 	px					both->player.x
 # define	py					both->player.y
@@ -65,7 +65,7 @@
 # define	DRAW_X				both->drawing.x_for_me
 # define	SCALER				both->drawing.scale_for_me
 # define	SP_COUNTER			both->schetchik.sprite_counter
-# define	QUALITY				3		// HIGHER NUMBER - WORSE QUALITY
+# define	QUALITY				1		// HIGHER NUMBER - WORSE QUALITY
 # define	SPR_NUM				both->get_info
 # define	C_COS				both->player.calc_cos
 # define	C_SIN				both->player.calc_sin
@@ -240,4 +240,8 @@ void	sprite_changer(t_both *both);
 void	sort_sprite(t_both *both);
 void	make_avarage_len(t_both *both);
 void	check_sprite_row(t_both *both, float x, float y);
+void	swap_sprites(t_both *both, int end, int i);
+
+
+
 #endif

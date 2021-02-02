@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 07:32:23 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:17:30 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,34 +50,15 @@ void			check_wall(t_both *both, float x, float y)
 
 void			check_sprite_row(t_both *both, float x, float y)
 {
-	int xx;
-	int yy;
 	int ix;
 	int iy;
 
 	ix = (int)x;
 	iy = (int)y;
-	xx = (int)x / MINI_MAP_SCALE;
-	yy = (int)y / MINI_MAP_SCALE;
-	// printf("CHECKING DIFF BETWEEN\n yy[%d] and y_stop[%d]\n", yy, y_stop);
-	// printf("xx[%d] and x_stop[%d]\n\n", xx, x_stop);
-	// printf("so ix = %d and iy = %d\n", ix % MINI_MAP_SCALE, iy % MINI_MAP_SCALE);
-	if (yy == y_stop && xx != x_stop)
-		ROW_FLAG = ix % MINI_MAP_SCALE;
-	else
-		ROW_FLAG = iy % MINI_MAP_SCALE;
-	// printf("AND WE GOT - %d ROW\n", ROW_FLAG);
+	printf("angle is %f\n", SPR_NUM[SP_COUNTER].first_angle);
+	if (ANGLE > M_PI_2)
+	ROW_FLAG = (int)((ix + iy) % MINI_MAP_SCALE);
 }
-
-
-
-
-
-
-
-
-
-
 
 static void		fix_params(t_both *both, int *number, int *end, float *len)
 {
@@ -106,12 +87,6 @@ void			print_sprite_mass(t_both *both)
 		printf("FIRST ANGLE = %f\n", SPR_NUM[counter].first_angle);
 	}
 }
-
-
-
-
-
-
 
 void			player_angle(t_both *both)
 {
@@ -147,8 +122,8 @@ void			player_angle(t_both *both)
 		if (KARTA[y_stop][x_stop] == '2')
 			check_sprite(both, len, prot - (FIX_ANGLE * end));
 	}
-	// sort_sprite(both);
 	make_avarage_len(both);
+	sort_sprite(both);
 	// print_sprite_mass(both);
 	sprite_changer(both);
 	printf("~~~~~~~~~~~~~~~DONE-~~~~~~~~~~~~~~~~~~~\n\n\n\n\n");

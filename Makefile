@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/01/31 07:45:48 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/02 09:25:21 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS		=	cub3d.c\
 				${PATH_IMG}get_xpm.c\
 				${PATH_IMG}parse_img.c\
 				${PATH_IMG}put_sprite.c\
+				${PATH_IMG}fix_sprites.c\
 
 
 
