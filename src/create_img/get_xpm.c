@@ -6,39 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 11:23:20 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/02 14:49:38 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-
-void	get_sprite_color(t_both *both, t_sprite *data)
-{
-	float	x;
-	int		y;
-	char 	*dst;
-	int 	counter;
-	float	scale;
-	
-	float width = (float)data->width;
-	float mini_scale = (float)(MINI_MAP_SCALE);
-	scale = width / mini_scale;
-	x = 0;
-	counter = 0;
-	while ((int)x < data->width)
-	{
-		y = -1;
-		while (++y < data->height)
-		{
-			dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
-			data->color_mass[counter][y] = *(unsigned int*)dst;
-		}
-		counter++;
-		x += scale;
-	}
-	data->color_mass[counter][0] = '\0';
-}
 
 void	get_color(t_both *both, t_sprite *data)
 {
@@ -129,5 +101,5 @@ void	get_sprite(t_both *both)
 	both->sprite.img = mlx_xpm_file_to_image(connect, both->sprite.path, &both->sprite.width, &both->sprite.height);
 	both->sprite.addr = mlx_get_data_addr(both->sprite.img,
 	&both->sprite.bits_per_pixel, &both->sprite.line_length, &both->sprite.endian);
-	get_sprite_color(both, &both->sprite);	
+	get_color(both, &both->sprite);	
 }

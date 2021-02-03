@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 13:19:33 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/03 08:33:48 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,62 @@ void	check_diff(t_both *both, t_sprite_info sprite)
 		my_pixel_put(&both->img, sprite.position * (RES_X/RAYS), y, 0xFF0000);
 }
 
+float	fix_sprite(t_both *both, float another_one)
+{
+	float len;
+	OLD1 = px;
+	OLD2 = py;
+
+	len = 0;
+	C_COS = cos(SPR_NUM[SP_COUNTER].first_angle - FIX_ANGLE);
+	C_SIN = sin(SPR_NUM[SP_COUNTER].first_angle - FIX_ANGLE);
+	while (KARTA[y_stop][x_stop] != '1' && KARTA[y_stop][x_stop])
+	{
+		len += 0.1;
+		OLD1 -= C_COS;
+		OLD2 -= C_SIN;
+		if (KARTA[y_stop][x_stop] == '1')
+			if (len < SPR_NUM[SP_COUNTER].len - 2)
+				return (MINI_MAP_SCALE);
+			
+	}
+	printf("len = %f\n", len);
+	printf("compare with - %f\n", SPR_NUM[SP_COUNTER].len);
+	return (0);
+}
+
+
+
+float	draw_left(t_both *both, float another_one, float pizda)
+{
+	// printf("another one = %f\n", another_one);
+	sprite3d(both, another_one);
+	SPR_NUM[SP_COUNTER].position++;
+	// if (pizda < 1)
+	// 	another_one += pizda;
+	// else
+		another_one += pizda;
+	return(another_one);
+}
+
+
+float	draw_right(t_both *both, float another_one, float pizda)
+{
+	sprite3d(both, another_one);
+	SPR_NUM[SP_COUNTER].position--;
+	if (pizda < 1)
+		another_one -= pizda;
+	else
+		another_one--;
+	return(another_one);
+}
+
+
+
+
+
+
+
 void	sprite_changer(t_both *both)
 {
 	SP_COUNTER = -1;
@@ -47,32 +103,30 @@ void	sprite_changer(t_both *both)
 	float	pizda;
 	float	rays;
 	float	ending;
+	float	counter_end;
+	int		flag = 0;
 
-	rays = (float)SPR_NUM[SP_COUNTER].rays;
+
 	check_diff(both, SPR_NUM[SP_COUNTER + 1]);
 	while (SPR_NUM[++SP_COUNTER].x_hit)
 	{
 		ending = 0;
-
-		rays = (float)SPR_NUM[SP_COUNTER].rays;
-			pizda = (float)(MINI_MAP_SCALE / rays);
-		another_one = SPR_NUM[SP_COUNTER].row_flag;
-		if (another_one >= MINI_MAP_SCALE - 1 || another_one < 0)
-			another_one = 0;
-		printf("another one: %f, pizda = %f\n", another_one, pizda);
-		printf("first angle: %f, last angle = %f\n",
-		SPR_NUM[SP_COUNTER].first_angle, SPR_NUM[SP_COUNTER].angle);
-		while((int)ending < MINI_MAP_SCALE)
+		counter_end = (MINI_MAP_SCALE / (float)SPR_NUM[SP_COUNTER].rays);
+		flag = 0;
+		if (SPR_NUM[SP_COUNTER].len < 1)
+			SPR_NUM[SP_COUNTER].len = 1;
+		rays = (RES_X * 10)/SPR_NUM[SP_COUNTER].len;
+		pizda = (float)(MINI_MAP_SCALE / rays);
+		// another_one = fix_sprite(both, another_one);
+		another_one = 0;
+		while((int)(ending += counter_end) < MINI_MAP_SCALE)
 		{
-			sprite3d(both, another_one);
-			SPR_NUM[SP_COUNTER].position++;
-			if (pizda < 1)
-				another_one += pizda;
-			else
-				another_one++;
-			if (another_one >= MINI_MAP_SCALE)
+			// if (flag == 0)
+				another_one = draw_left(both, another_one, pizda);
+			// else
+			// 	another_one = draw_right(both, another_one, pizda);
+			if (another_one > MINI_MAP_SCALE || another_one < 0)
 				break ;
-			ending += pizda;
 		}
 	check_diff(both, SPR_NUM[SP_COUNTER]);
 	}
