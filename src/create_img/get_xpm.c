@@ -6,12 +6,33 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 10:06:53 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/03 11:21:35 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+int		fill_no_color(t_both *both, t_sprite *data, int counter)
+{
+	int		i;
+	int		y;
+	char	*dst;
+	int x;
+
+	x = 0;
+	i = (MINI_MAP_SCALE - (int)both->sprite.width)/2;
+	while (x++ < i)
+	{
+		y = -1;
+		while (++y <= both->sprite.height)
+		// {
+		// dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
+			data->color_mass[counter][y] = -100500;
+		// }
+		counter++;
+	}
+	return (counter);
+}
 void	get_sprite_color(t_both *both, t_sprite *data)
 {
 	float	x;
@@ -19,23 +40,28 @@ void	get_sprite_color(t_both *both, t_sprite *data)
 	char 	*dst;
 	int 	counter;
 	float	scale;
-	
-	float width = (float)data->width;
-	float mini_scale = (float)(MINI_MAP_SCALE); //* QUALITY;
-	scale = width / mini_scale;
+	int		pos;
+
+	pos = 0;	
 	x = 0;
 	counter = 0;
-	while ((int)x < data->width)
+	float width = (float)data->width;
+	if (width < MINI_MAP_SCALE)
+		counter = fill_no_color(both, &both->sprite, counter);
+	float mini_scale = (float)(MINI_MAP_SCALE);
+	scale = width / mini_scale;
+	while ((int)x++ < data->width)
 	{
 		y = -1;
-		while (++y < data->height)
+		while (++y <= data->height)
 		{
 			dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
 			data->color_mass[counter][y] = *(unsigned int*)dst;
 		}
 		counter++;
-		x += scale;
 	}
+	if (width < MINI_MAP_SCALE)
+		fill_no_color(both, &both->sprite, counter);
 	data->color_mass[counter][0] = '\0';
 }
 

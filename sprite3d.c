@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 10:07:52 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/03 11:00:03 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	sprite_changer(t_both *both)
 		flag = 0;
 		if (SPR_NUM[SP_COUNTER].len < 1)
 			SPR_NUM[SP_COUNTER].len = 1;
-		rays = (RES_X * 10 )/SPR_NUM[SP_COUNTER].len;
+		rays = (RES_X * 10)/SPR_NUM[SP_COUNTER].len;
 		pizda = (float)(MINI_MAP_SCALE / rays);
 		another_one = fix_sprite(both, another_one);
 		if (another_one != 0)
@@ -140,8 +140,7 @@ void	sprite3d(t_both *both, float another_one)
 	float endf = end;
 	float yf = DRAW_Y;
 	scale_texture = (float)((both->sprite.height)/(endf - yf))/QUALITY;
-	// printf("gonna draw %d row\n", (int)another_one);
-	while (DRAW_Y++ < end)
+	while (DRAW_Y++ <= end)
 	{
 		SCALER = RES_X / RAYS;
 		DRAW_X = SCALER * SPR_NUM[SP_COUNTER].position;
