@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 09:32:44 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/03 09:38:18 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,7 @@ void	sprite3d(t_both *both, float another_one)
 		while (SCALER--)
 		{
 			if (DRAW_Y > 0 && DRAW_X < RES_X && DRAW_X > 0 &&
-			 another_one > 0 && both->sprite.color_mass[(int)another_one][(int)bugabuga] > 0
-			 && another_one < MINI_MAP_SCALE && bugabuga < MINI_MAP_SCALE)
+			 another_one > 0 && both->sprite.color_mass[(int)another_one][(int)bugabuga] > 0)
 				my_pixel_put(&both->img, DRAW_X, DRAW_Y, both->sprite.color_mass[(int)another_one][(int)bugabuga]);
 			bugabuga += scale_texture;
 			DRAW_X++;
