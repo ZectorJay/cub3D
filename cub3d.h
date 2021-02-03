@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 09:27:13 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/03 09:53:05 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define	RES_X				both->mlx.res_x
 # define	RES_Y 				both->mlx.res_y
 # define	HRES_Y 				both->mlx.half_res_y
-# define	MINI_MAP_SCALE		80
+# define	MINI_MAP_SCALE		220
 # define	PLAYER_SCALE		(int)(MINI_MAP_SCALE/3)
 # define 	px					both->player.x
 # define	py					both->player.y
