@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 09:25:40 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/04 06:23:40 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,6 @@ void	check_sprite(t_both *both, float len, float angle)
 		both->get_info[SP_COUNTER].y_hit = y_stop;
 		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2/MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].len = 0;//len;
-		check_sprite_row(both, OLD1 + C_COS, OLD2 + C_SIN);
-		SPR_NUM[SP_COUNTER].row_flag = ROW_FLAG;
-		// printf("ROW - %d\n", ROW_FLAG);
 		SPR_NUM[SP_COUNTER].av_len = malloc(sizeof(float) * RAYS);
 		both->get_info[SP_COUNTER].first_angle = angle;
 		both->get_info[SP_COUNTER].angle = angle;

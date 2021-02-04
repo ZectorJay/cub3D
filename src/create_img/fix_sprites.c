@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:23:56 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 09:25:02 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/04 06:38:50 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	make_avarage_len(t_both *both)
 			SPR_NUM[end].len = SPR_NUM[end].av_len[i];
 		i++;
 		while (SPR_NUM[end].av_len[i] &&
-		SPR_NUM[end].av_len[i] < (SPR_NUM[end].av_len[i - 1] + 2)
-		&& SPR_NUM[end].av_len[i] > (SPR_NUM[end].av_len[i - 1] - 2))
+		SPR_NUM[end].av_len[i] < (SPR_NUM[end].av_len[i - 1] + 5)
+		&& SPR_NUM[end].av_len[i] > (SPR_NUM[end].av_len[i - 1] - 5))
 		{
 			SPR_NUM[end].len += SPR_NUM[end].av_len[i];
 			i++;

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 11:21:35 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/04 11:11:13 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@ int		fill_no_color(t_both *both, t_sprite *data, int counter)
 	int		i;
 	int		y;
 	char	*dst;
-	int x;
+	int		x;
 
 	x = 0;
-	i = (MINI_MAP_SCALE - (int)both->sprite.width)/2;
+	i = ((MINI_MAP_SCALE - (int)both->sprite.width)/2);
 	while (x++ < i)
 	{
 		y = -1;
 		while (++y <= both->sprite.height)
-		// {
-		// dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
 			data->color_mass[counter][y] = -100500;
-		// }
 		counter++;
 	}
 	return (counter);
@@ -40,25 +37,23 @@ void	get_sprite_color(t_both *both, t_sprite *data)
 	char 	*dst;
 	int 	counter;
 	float	scale;
-	int		pos;
+	float width;
 
-	pos = 0;	
 	x = 0;
 	counter = 0;
-	float width = (float)data->width;
+	width = (float)data->width;
 	if (width < MINI_MAP_SCALE)
 		counter = fill_no_color(both, &both->sprite, counter);
-	float mini_scale = (float)(MINI_MAP_SCALE);
-	scale = width / mini_scale;
-	while ((int)x++ < data->width)
+	scale = width / MINI_MAP_SCALE;
+	while ((int)x++ < data->width && counter++ < MINI_MAP_SCALE)
 	{
 		y = -1;
-		while (++y <= data->height)
+		while (++y < data->height)
 		{
-			dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
+			dst = (data->addr + ((int)y * data->line_length +
+			(int)x * (data->bits_per_pixel / 8)));
 			data->color_mass[counter][y] = *(unsigned int*)dst;
 		}
-		counter++;
 	}
 	if (width < MINI_MAP_SCALE)
 		fill_no_color(both, &both->sprite, counter);
@@ -83,7 +78,8 @@ void	get_color(t_both *both, t_sprite *data)
 		y = -1;
 		while (++y < data->height)
 		{
-			dst = (data->addr + ((int)y * data->line_length + (int)x * (data->bits_per_pixel / 8)));
+			dst = (data->addr + ((int)y * data->line_length +
+			(int)x * (data->bits_per_pixel / 8)));
 			data->color_mass[counter][y] = *(unsigned int*)dst;
 		}
 		counter++;
@@ -99,9 +95,11 @@ void	get_north(t_both *both)
 
 	i = search_texture(both, 'N', 'O');
 	skip_spaces(both, i, &both->north);
-	both->north.img = mlx_xpm_file_to_image(connect, both->north.path, &both->north.width, &both->north.height);
+	both->north.img = mlx_xpm_file_to_image(connect,
+	both->north.path, &both->north.width, &both->north.height);
 	both->north.addr = mlx_get_data_addr(both->north.img,
-	&both->north.bits_per_pixel, &both->north.line_length, &both->north.endian);
+	&both->north.bits_per_pixel,
+	&both->north.line_length, &both->north.endian);
 	get_color(both, &both->north);
 }
 
@@ -112,9 +110,11 @@ void	get_south(t_both *both)
 
 	i = search_texture(both, 'S', 'O');
 	skip_spaces(both, i, &both->south);
-	both->south.img = mlx_xpm_file_to_image(connect, both->south.path, &both->south.width, &both->south.height);
+	both->south.img = mlx_xpm_file_to_image(connect,
+	both->south.path, &both->south.width, &both->south.height);
 	both->south.addr = mlx_get_data_addr(both->south.img,
-	&both->south.bits_per_pixel, &both->south.line_length, &both->south.endian);
+	&both->south.bits_per_pixel,
+	&both->south.line_length, &both->south.endian);
 	get_color(both, &both->south);
 }
 
@@ -125,9 +125,11 @@ void	get_east(t_both *both)
 
 	i = search_texture(both, 'E', 'A');
 	skip_spaces(both, i, &both->east);
-	both->east.img = mlx_xpm_file_to_image(connect, both->east.path, &both->east.width, &both->east.height);
+	both->east.img = mlx_xpm_file_to_image(connect,
+	both->east.path, &both->east.width, &both->east.height);
 	both->east.addr = mlx_get_data_addr(both->east.img,
-	&both->east.bits_per_pixel, &both->east.line_length, &both->east.endian);
+	&both->east.bits_per_pixel,
+	&both->east.line_length, &both->east.endian);
 	get_color(both, &both->east);
 }
 
@@ -138,9 +140,11 @@ void	get_west(t_both *both)
 
 	i = search_texture(both, 'W', 'E');
 	skip_spaces(both, i, &both->west);
-	both->west.img = mlx_xpm_file_to_image(connect, both->west.path, &both->west.width, &both->west.height);
+	both->west.img = mlx_xpm_file_to_image(connect,
+	both->west.path, &both->west.width, &both->west.height);
 	both->west.addr = mlx_get_data_addr(both->west.img,
-	&both->west.bits_per_pixel, &both->west.line_length, &both->west.endian);
+	&both->west.bits_per_pixel,
+	&both->west.line_length, &both->west.endian);
 	get_color(both, &both->west);
 }
 
@@ -149,10 +153,15 @@ void	get_sprite(t_both *both)
 	int i;
 	int j;
 
-	i = search_texture(both, 'S', ' '); // НЕ ЗАБЫТЬ ЧТО СЧИТЫВАЕТ КРИВО!! ЪУЪУЪУЪУЪУЪУЪ!!!!!!!!!!!!!!!!
+	i = search_texture(both, 'S', ' ');
 	skip_spaces(both, i, &both->sprite);
-	both->sprite.img = mlx_xpm_file_to_image(connect, both->sprite.path, &both->sprite.width, &both->sprite.height);
+	both->sprite.img = mlx_xpm_file_to_image(connect,
+	both->sprite.path, &both->sprite.width, &both->sprite.height);
 	both->sprite.addr = mlx_get_data_addr(both->sprite.img,
-	&both->sprite.bits_per_pixel, &both->sprite.line_length, &both->sprite.endian);
-	get_sprite_color(both, &both->sprite);	
+	&both->sprite.bits_per_pixel,
+	&both->sprite.line_length, &both->sprite.endian);
+	if (RESIZE_SPRITE == 0)
+		get_sprite_color(both, &both->sprite);
+	else
+		get_color(both, &both->sprite);
 }

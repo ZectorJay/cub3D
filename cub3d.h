@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 10:14:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/04 12:35:40 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define	RES_X				both->mlx.res_x
 # define	RES_Y 				both->mlx.res_y
 # define	HRES_Y 				both->mlx.half_res_y
-# define	MINI_MAP_SCALE		220
+# define	MINI_MAP_SCALE		150
 # define	PLAYER_SCALE		(int)(MINI_MAP_SCALE/3)
 # define 	px					both->player.x
 # define	py					both->player.y
@@ -65,12 +65,13 @@
 # define	DRAW_X				both->drawing.x_for_me
 # define	SCALER				both->drawing.scale_for_me
 # define	SP_COUNTER			both->schetchik.sprite_counter
-# define	QUALITY				2		// HIGHER NUMBER - WORSE QUALITY
+# define	QUALITY				3		// HIGHER NUMBER - WORSE QUALITY
 # define	SPR_NUM				both->get_info
 # define	C_COS				both->player.calc_cos
 # define	C_SIN				both->player.calc_sin
 # define	LEN_COUNTER			SPR_NUM[counter].len_counter
 # define	ROW_FLAG			both->schetchik.flag_color_row
+# define	RESIZE_SPRITE		0
 
 
 typedef struct		s_mlx

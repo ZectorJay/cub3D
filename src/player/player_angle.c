@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/03 07:36:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/04 10:39:35 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,6 @@ void			check_wall(t_both *both, float x, float y)
 		check_row(both, &both->south, x);
 		both->flag_wall = 4;
 	}
-}
-
-void			check_sprite_row(t_both *both, float x, float y)
-{
-	int ix;
-	int iy;
-
-	ix = (int)x;
-	iy = (int)y;
-	// printf("angle is %f\n", SPR_NUM[SP_COUNTER].first_angle);
-	if (ANGLE > M_PI_2)
-	ROW_FLAG = (int)((ix + iy) % MINI_MAP_SCALE);
 }
 
 static void		fix_params(t_both *both, int *number, int *end, float *len)
