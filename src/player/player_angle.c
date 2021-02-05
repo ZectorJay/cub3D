@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/04 10:39:35 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,16 @@ static void		fix_params(t_both *both, int *number, int *end, float *len)
 		*(int*)number = (int)(-1 * (RAYS / 2));
 	if (end)
 		*(int*)end = (int)(RAYS / 2) + 1;
-	OLD1 = (px + PLAYER_SCALE);
-	OLD2 = (py + PLAYER_SCALE);
+	OLD1 = (PX + PLAYER_SCALE);
+	OLD2 = (PY + PLAYER_SCALE);
 	*(float*)len = 0;
 }
 
-void			print_sprite_mass(t_both *both)
+void			sprite_works(t_both *both)
 {
-	int counter;
-
-	counter = -1;
-	while(SPR_NUM[++counter].x_hit)
-	{
-		printf("-------------------COUNTER = %d-------------\n",counter);
-		printf("SPRITE START AT %d POSITION\n", SPR_NUM[counter].position);
-		printf("SPRITE HAVE %d RAYS\n", SPR_NUM[counter].rays);
-		printf("FOUND TEXTURE AT: y[%d]x[%d]\n", both->get_info[counter].x_hit, both->get_info[counter].y_hit);
-		printf("ANGLE = %f, LEN = %f\n", both->get_info[counter].angle, both->get_info[counter].len);
-		printf("FIRST ANGLE = %f\n", SPR_NUM[counter].first_angle);
-	}
+	make_avarage_len(both);
+	sort_sprite(both);
+	sprite_changer(both);
 }
 
 void			player_angle(t_both *both)
@@ -83,14 +74,12 @@ void			player_angle(t_both *both)
 	int		end;	
 	fix_params(both, &number, &end, &len);
 	clear_sprites(both);
-	C_COS = cos(prot - (FIX_ANGLE * end));
-	C_SIN = sin(prot - (FIX_ANGLE * end));
+	C_COS = cos(PROT - (FIX_ANGLE * end));
+	C_SIN = sin(PROT - (FIX_ANGLE * end));
 	NUM = 0;
 	SP_COUNTER = 0;
-	printf("~~~~~~~~~~~~~~~START~~~~~~~~~~~~~~~~~~~\n");
-	while (KARTA[y_stop][x_stop] != '1')
+	while (KARTA[y_stop][x_stop] != '1' && (len += 0.1) > 0)
 	{
-		len += 0.1;
 		OLD1 -= C_COS;
 		OLD2 -= C_SIN;
 		if (KARTA[y_stop][x_stop] == '1')
@@ -103,16 +92,11 @@ void			player_angle(t_both *both)
 				break ;
 			try3d(both, len * both->cos_table[NUM]);
 			fix_params(both, 0, 0, &len);
-	C_COS = cos(prot - (FIX_ANGLE * end));
-	C_SIN = sin(prot - (FIX_ANGLE * end));
+	C_COS = cos(PROT - (FIX_ANGLE * end));
+	C_SIN = sin(PROT - (FIX_ANGLE * end));
 			NUM++;
 		}
 		if (KARTA[y_stop][x_stop] == '2')
-			check_sprite(both, len, prot - (FIX_ANGLE * end));
+			check_sprite(both, len, PROT - (FIX_ANGLE * end));
 	}
-	make_avarage_len(both);
-	sort_sprite(both);
-	// print_sprite_mass(both);
-	sprite_changer(both);
-	printf("~~~~~~~~~~~~~~~DONE-~~~~~~~~~~~~~~~~~~~\n\n\n\n\n");
 }

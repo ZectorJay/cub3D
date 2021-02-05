@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 15:22:18 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 04:23:05 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	fill_cos(t_both *both)
 	counter = 0;
 	number = -1 * (RAYS / 2);
 	end = RAYS / 2 + 1;
-	ugol = prot - (FIX_ANGLE * end);
+	ugol = PROT - (FIX_ANGLE * end);
 	while (--end > number)
 	{
 		both->cos_table[counter] =
-		cos(prot - (FIX_ANGLE * end) - prot);
+		cos(PROT - (FIX_ANGLE * end) - PROT);
 		counter++;
 	}
 }

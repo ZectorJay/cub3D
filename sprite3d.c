@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/04 14:02:11 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:35:43 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	check_diff(t_both *both, t_sprite_info sprite)
 float	fix_sprite(t_both *both)
 {
 	float len;
-	OLD1 = px + PLAYER_SCALE;
-	OLD2 = py + PLAYER_SCALE;
+	OLD1 = PX + PLAYER_SCALE;
+	OLD2 = PY + PLAYER_SCALE;
 
 	len = 0;
 	C_COS = cos(SPR_NUM[SP_COUNTER].first_angle - (2 * FIX_ANGLE));
@@ -57,7 +57,7 @@ float	fix_sprite(t_both *both)
 		OLD2 -= C_SIN;
 		if (KARTA[y_stop][x_stop] == '1')
 			if (len < SPR_NUM[SP_COUNTER].len)
-				return (both->sprite.width);
+				return (MINI_MAP_SCALE);
 			
 	}
 	return (0);
@@ -74,7 +74,7 @@ float	draw_left(t_both *both, float another_one, float pizda)
 }
 
 
-float	draw_right(t_both *both, float another_one, float pizda)
+float		draw_right(t_both *both, float another_one, float pizda)
 {
 	sprite3d(both, another_one);
 	SPR_NUM[SP_COUNTER].position--;
@@ -82,19 +82,18 @@ float	draw_right(t_both *both, float another_one, float pizda)
 	return(another_one);
 }
 
-void	fix_params(t_both *both, float *pizda, float *another_one)
+static void	fix_params(t_both *both, float *pizda, float *another_one)
 {
 	float	rays;
-
-	rays = (RES_X * 10 / QUALITY)/SPR_NUM[SP_COUNTER].len;
-	*pizda = (float)(MINI_MAP_SCALE / rays);
-	*another_one = fix_sprite(both);
 	if (SPR_NUM[SP_COUNTER].len < MINI_MAP_SCALE/10)
 		SPR_NUM[SP_COUNTER].len = MINI_MAP_SCALE/10;
+	rays = ((RES_X * 10)/SPR_NUM[SP_COUNTER].len);
+	*pizda = (float)(MINI_MAP_SCALE / rays);
+	*another_one = fix_sprite(both);
 }
 
 
-void	sprite_changer(t_both *both)
+void		sprite_changer(t_both *both)
 {
 	float	another_one;
 	float	pizda;
@@ -105,7 +104,6 @@ void	sprite_changer(t_both *both)
 	SP_COUNTER = -1;
 	while (SPR_NUM[++SP_COUNTER].x_hit)
 	{
-		// printf("len = %f\n", SPR_NUM[SP_COUNTER].len);
 		ending = 0;
 		counter_end = (MINI_MAP_SCALE / (float)SPR_NUM[SP_COUNTER].rays);
 		flag = 0;
@@ -116,7 +114,7 @@ void	sprite_changer(t_both *both)
 			SPR_NUM[SP_COUNTER].position += (MINI_MAP_SCALE / counter_end);
 			ending -= counter_end;
 		}
-		check_diff(both, SPR_NUM[SP_COUNTER]);
+		pizda *= 1.8;
 		while((int)(ending += counter_end) <= MINI_MAP_SCALE)
 		{
 			if (flag == 0)
@@ -124,7 +122,6 @@ void	sprite_changer(t_both *both)
 			else
 				another_one = draw_right(both, another_one, pizda);
 		}
-		check_diff(both, SPR_NUM[SP_COUNTER]);
 	}
 }
 

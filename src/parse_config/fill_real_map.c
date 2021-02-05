@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 15:44:00 by hmickey           #+#    #+#             */
-/*   Updated: 2021/01/20 15:58:31 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:36:05 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	get_mini_map(t_both *both)
 			// check_dir(dir, both);
 			x += MINI_MAP_SCALE;
 			KARTA[j][i] = '0';
-			px = x;
-			py = y;
+			PX = x;
+			PY = y;
 		}
 		else if (KARTA[j][i] == '2')
 		{

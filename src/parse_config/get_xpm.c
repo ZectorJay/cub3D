@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/01/26 17:19:12 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:40:10 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	get_north(t_both *both)
 
 	i = search_texture(both, 'N', 'O');
 	skip_spaces(both, i, &both->north);
-	both->north.img = mlx_xpm_file_to_image(connect, both->north.path, &both->north.width, &both->north.height);
+	both->north.img = mlx_xpm_file_to_image(CONNECT, both->north.path, &both->north.width, &both->north.height);
 	both->north.addr = mlx_get_data_addr(both->north.img,
 	&both->north.bits_per_pixel, &both->north.line_length, &both->north.endian);
 	get_color(both, &both->north);
@@ -59,7 +59,7 @@ void	get_south(t_both *both)
 
 	i = search_texture(both, 'S', 'O');
 	skip_spaces(both, i, &both->south);
-	both->south.img = mlx_xpm_file_to_image(connect, both->south.path, &both->south.width, &both->south.height);
+	both->south.img = mlx_xpm_file_to_image(CONNECT, both->south.path, &both->south.width, &both->south.height);
 	both->south.addr = mlx_get_data_addr(both->south.img,
 	&both->south.bits_per_pixel, &both->south.line_length, &both->south.endian);
 	get_color(both, &both->south);
@@ -72,7 +72,7 @@ void	get_east(t_both *both)
 
 	i = search_texture(both, 'E', 'A');
 	skip_spaces(both, i, &both->east);
-	both->east.img = mlx_xpm_file_to_image(connect, both->east.path, &both->east.width, &both->east.height);
+	both->east.img = mlx_xpm_file_to_image(CONNECT, both->east.path, &both->east.width, &both->east.height);
 	both->east.addr = mlx_get_data_addr(both->east.img,
 	&both->east.bits_per_pixel, &both->east.line_length, &both->east.endian);
 	get_color(both, &both->east);
@@ -85,7 +85,7 @@ void	get_west(t_both *both)
 
 	i = search_texture(both, 'W', 'E');
 	skip_spaces(both, i, &both->west);
-	both->west.img = mlx_xpm_file_to_image(connect, both->west.path, &both->west.width, &both->west.height);
+	both->west.img = mlx_xpm_file_to_image(CONNECT, both->west.path, &both->west.width, &both->west.height);
 	both->west.addr = mlx_get_data_addr(both->west.img,
 	&both->west.bits_per_pixel, &both->west.line_length, &both->west.endian);
 	get_color(both, &both->west);

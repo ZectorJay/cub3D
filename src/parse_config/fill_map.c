@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/01/26 20:10:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	draw_map(char **a)
 void	check_dir(char dir, t_both *both)
 {
 	if (dir == 'S')
-		prot = 3 * M_PI_2;
+		PROT = 3 * M_PI_2;
 	else if (dir == 'W')
-		prot = M_PI;
+		PROT = M_PI;
 	else if (dir == 'E')
-		prot = 2 * M_PI;
+		PROT = 2 * M_PI;
 	else if (dir == 'N')
-		prot = M_PI_2;
+		PROT = M_PI_2;
 }
 
 void	get_minimap(t_both *both)
@@ -58,8 +58,8 @@ void	get_minimap(t_both *both)
 			check_dir(dir, both);
 			x += MINI_MAP_SCALE;
 			KARTA[j][i] = '0';
-			px = x;
-			py = y;
+			PX = x;
+			PY = y;
 		}
 		else if (KARTA[j][i] == '2')
 			x += MINI_MAP_SCALE;

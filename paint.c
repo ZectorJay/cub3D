@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:51:30 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/02 04:19:10 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:40:10 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void my_pixel_put(t_data *data, int x, int y, int color)
 
 void	create_img(t_both *both, t_data *something, int size_x, int size_y)
 {
-	something->img = mlx_new_image(connect, size_x, size_y);
+	something->img = mlx_new_image(CONNECT, size_x, size_y);
 	something->addr = mlx_get_data_addr(something->img, &something->bits_per_pixel, &something->line_length,
     &something->endian);
 }

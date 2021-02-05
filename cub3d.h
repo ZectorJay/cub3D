@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/04 12:35:40 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:43:12 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,26 @@
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 
-# define	COLUMN_HEIGHT		5
-# define	RES_X				both->mlx.res_x
-# define	RES_Y 				both->mlx.res_y
-# define	HRES_Y 				both->mlx.half_res_y
-# define	MINI_MAP_SCALE		150
-# define	PLAYER_SCALE		(int)(MINI_MAP_SCALE/3)
-# define 	px					both->player.x
-# define	py					both->player.y
-# define	connect				both->mlx.con
-# define	win					both->mlx.window
-# define	ROTATION_SPEED		4
-# define	prot				both->player.rot
+# define COLUMN_HEIGHT			5
+# define RES_X					both->mlx.res_x
+# define RES_Y	 				both->mlx.res_y
+# define HRES_Y 				both->mlx.half_res_y
+# define MINI_MAP_SCALE			160
+# define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
+# define PX						both->player.x
+# define PY						both->player.y
+# define CONNECT				both->mlx.con
+# define WIN					both->mlx.window
+# define ROTATION_SPEED			4
+# define PROT					both->player.rot
 # define	pflag				both->player.flag
 # define	SPEED				both->player.speedy
 # define	SPEED_NORM			MINI_MAP_SCALE * 1
 # define	DOUBLE_SPEED		SPEED_NORM * 1.5
 # define	TXT					both->map.map
 # define	KARTA				both->map.karta
-# define	xstop				(int)(px + PLAYER_SCALE)/MINI_MAP_SCALE
-# define	ystop				(int)(py + PLAYER_SCALE)/MINI_MAP_SCALE
+# define	xstop				(int)(PX + PLAYER_SCALE)/MINI_MAP_SCALE
+# define	ystop				(int)(PY + PLAYER_SCALE)/MINI_MAP_SCALE
 # define	NUM					both->counter
 # define	ANGLE				(float)M_PI/3	//60 градусов обзор
 # define	RAYS				both->mlx.rays // КОЛ-ВО ЛУЧЕЙ
@@ -71,8 +71,9 @@
 # define	C_SIN				both->player.calc_sin
 # define	LEN_COUNTER			SPR_NUM[counter].len_counter
 # define	ROW_FLAG			both->schetchik.flag_color_row
-# define	RESIZE_SPRITE		0
-
+# define	RESIZE_SPRITE		1
+# define	SCREENSHOT_X		both->mlx.screenshot_x
+# define	SCREENSHOT_Y		both->mlx.screenshot_y
 
 typedef struct		s_mlx
 {
@@ -80,6 +81,8 @@ typedef struct		s_mlx
 	void			*window;
 	int				res_x;
 	int				res_y;
+	int				screenshot_x;
+	int				screenshot_y;
 	int				half_res_y;
 	int				rays;
 }					t_mlx;
@@ -118,11 +121,11 @@ typedef	struct		s_sprite_info
 
 typedef struct		s_data
 {
-    void			*img;
-    char			*addr;
-    int				bits_per_pixel;
-    int				line_length;
-    int				endian;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
 }					t_data;
 
 typedef struct		s_drawing
@@ -133,7 +136,6 @@ typedef struct		s_drawing
 	int				scale_for_me;
 	float			sprite_counter;
 }					t_drawing;
-
 
 typedef struct 		s_sprite
 {
@@ -152,7 +154,6 @@ typedef struct 		s_sprite
 	int				counter;
 	float			fix_width;
 }					t_sprite;
-
 
 typedef struct		s_player
 {
@@ -177,8 +178,8 @@ typedef	struct		s_counters
 {
 	int				sprite_counter;
 	int				flag_color_row;
+	int				save_flag;
 }					t_counters;
-
 
 typedef struct	s_both
 {
@@ -242,7 +243,9 @@ void	sort_sprite(t_both *both);
 void	make_avarage_len(t_both *both);
 void	check_sprite_row(t_both *both, float x, float y);
 void	swap_sprites(t_both *both, int end, int i);
-
-
+void	sprite_works(t_both *both);
+void	make_screenshot(t_both *both);
+void	find_texture(t_both *both);
+int		check_file_name(char *file);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/04 10:47:34 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/05 09:14:29 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS		=	cub3d.c\
 				sprite3d.c\
 				${PATH_CONF}read_config.c\
 				${PATH_CONF}fill_map.c\
+				${PATH_CONF}check_file.c\
 				${PATH_CONF}fill_real_map.c\
 				${PATH_GNL}get_next_line.c\
 				${PATH_GNL}get_next_line_utils.c\
@@ -40,6 +41,7 @@ SRCS		=	cub3d.c\
 				${PATH_IMG}parse_img.c\
 				${PATH_IMG}put_sprite.c\
 				${PATH_IMG}fix_sprites.c\
+				${PATH_IMG}screenshot.c\
 
 
 
