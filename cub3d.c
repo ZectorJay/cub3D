@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:36:08 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:41:03 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 13:24:13 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		paint(t_both *both)
 {
-	if (press_a || press_d || press_s || press_w || press_rot)
+	if (PRESS_A || PRESS_D || PRESS_S || PRESS_W || PRESS_ROT)
 	{
 		mlx_clear_window(CONNECT, WIN);
 		paint_move(both);
@@ -40,13 +40,15 @@ void	first_draw(t_both *both)
 void	check_args(t_both *both, char **argv, int argc)
 {
 	if (!(both->map.fd = open(argv[1], O_RDONLY)))
-		error_message("Fail to open config file", both);
+		if (!(both->map.fd = open(argv[2], O_RDONLY)))
+			error_message("Fail to open config file", both);
 	if (!check_file_name(argv[1]))
-		error_message("Fail extenstion. Its not .cub file!", both);
+		error_message("Fail extenstion. Or fail arguments order", both);
 	parse_map(both);
-	if (argc == 3 && (!ft_strncmp(argv[1], "--save", 6)
-	|| !ft_strncmp(argv[2], "--save", 6)))
+	if (argc == 3 && !ft_strncmp(argv[2], "--save", 7))
 		both->schetchik.save_flag = 1;
+	else if (argc == 3)
+		error_message("Wrong screenshot command", both);
 }
 
 int		x_cross_close(t_both *both)

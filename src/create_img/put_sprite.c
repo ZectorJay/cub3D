@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/04 06:23:40 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:58:09 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		check_previous_sprites(t_both *both)
 		return(-1);
 	while(SPR_NUM[counter].x_hit)
 	{
-		if (x_stop == SPR_NUM[counter].x_hit)
-			if (y_stop == SPR_NUM[counter].y_hit)
+		if (X_STOP == SPR_NUM[counter].x_hit)
+			if (Y_STOP == SPR_NUM[counter].y_hit)
 				return(counter);
 		counter++;
 	}
@@ -62,9 +62,9 @@ void	check_sprite(t_both *both, float len, float angle)
 {
 	if(check_previous_sprites(both) == -1)
 	{
-		both->get_info[SP_COUNTER].x_hit = x_stop;
+		both->get_info[SP_COUNTER].x_hit = X_STOP;
 		both->get_info[SP_COUNTER].f_x_hit = (float)(OLD1/MINI_MAP_SCALE);
-		both->get_info[SP_COUNTER].y_hit = y_stop;
+		both->get_info[SP_COUNTER].y_hit = Y_STOP;
 		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2/MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].len = 0;//len;
 		SPR_NUM[SP_COUNTER].av_len = malloc(sizeof(float) * RAYS);

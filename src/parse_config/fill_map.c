@@ -6,23 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 10:21:49 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	draw_map(char **a)
-{
-	int i;
-
-	i = -1;
-	while (a[++i])
-	{
-		ft_putstr(a[i]);
-		write(1, "\n", 1);
-	}
-}
 
 void	check_dir(char dir, t_both *both)
 {

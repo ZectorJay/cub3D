@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:35:43 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:58:09 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ float	fix_sprite(t_both *both)
 	C_SIN = sin(SPR_NUM[SP_COUNTER].first_angle - (2 * FIX_ANGLE));
 	if (SPR_NUM[SP_COUNTER].position < 3)
 		return (MINI_MAP_SCALE);
-	while (KARTA[y_stop][x_stop] != '1' && KARTA[y_stop][x_stop])
+	while (KARTA[Y_STOP][X_STOP] != '1' && KARTA[Y_STOP][X_STOP])
 	{
 		len += 0.1;
 		OLD1 -= C_COS;
 		OLD2 -= C_SIN;
-		if (KARTA[y_stop][x_stop] == '1')
+		if (KARTA[Y_STOP][X_STOP] == '1')
 			if (len < SPR_NUM[SP_COUNTER].len)
 				return (MINI_MAP_SCALE);
 			

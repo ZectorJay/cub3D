@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:43:12 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 11:45:08 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,57 +23,75 @@
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 
+/*
+** CHANGABLE DEFINES
+*/
+
 # define COLUMN_HEIGHT			5
+# define MINI_MAP_SCALE			160
+# define ROTATION_SPEED			4
+# define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
+# define SPEED_NORM				MINI_MAP_SCALE * 1
+# define DOUBLE_SPEED			SPEED_NORM * 1.5
+# define RESIZE_SPRITE			1
+
+/*
+** ANGLE - Player view angle. M_PI/3 = 60 degree
+*/
+
+# define ANGLE					(float)M_PI/3
+
+/*
+** HIGHER QUALITY NUMBER - WORSE QUALITY OF PICTURE (AND FASTER GAME)
+*/
+
+# define QUALITY				3
+
+/*
+** DONT TOUCH THOSE
+*/
+
 # define RES_X					both->mlx.res_x
 # define RES_Y	 				both->mlx.res_y
 # define HRES_Y 				both->mlx.half_res_y
-# define MINI_MAP_SCALE			160
-# define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
 # define PX						both->player.x
 # define PY						both->player.y
 # define CONNECT				both->mlx.con
 # define WIN					both->mlx.window
-# define ROTATION_SPEED			4
 # define PROT					both->player.rot
-# define	pflag				both->player.flag
-# define	SPEED				both->player.speedy
-# define	SPEED_NORM			MINI_MAP_SCALE * 1
-# define	DOUBLE_SPEED		SPEED_NORM * 1.5
-# define	TXT					both->map.map
-# define	KARTA				both->map.karta
-# define	xstop				(int)(PX + PLAYER_SCALE)/MINI_MAP_SCALE
-# define	ystop				(int)(PY + PLAYER_SCALE)/MINI_MAP_SCALE
-# define	NUM					both->counter
-# define	ANGLE				(float)M_PI/3	//60 градусов обзор
-# define	RAYS				both->mlx.rays // КОЛ-ВО ЛУЧЕЙ
-# define	FIX_ANGLE			(float)(ANGLE/RAYS) // ШАГ ЛУЧЕЙ
-# define	x_stop				(int)(OLD1/MINI_MAP_SCALE)
-# define	y_stop				(int)(OLD2/MINI_MAP_SCALE)
-# define	press_w				both->player.move_w
-# define	press_a				both->player.move_a
-# define	press_s				both->player.move_s
-# define	press_d				both->player.move_d
-# define	press_rot			both->player.move_rot
-# define	HIDE_MAP			both->map.map_hide
-# define	FLOOR_COLOR			0x777777
-# define	SKY_COLOR			0xB3FFF1
-# define	white_space			" \n\t\v\f\r"
-# define	OLD1				both->player.old_x
-# define	OLD2				both->player.old_y
-# define	LEVEL				both->drawing.height
-# define	DRAW_Y				both->drawing.y_for_me
-# define	DRAW_X				both->drawing.x_for_me
-# define	SCALER				both->drawing.scale_for_me
-# define	SP_COUNTER			both->schetchik.sprite_counter
-# define	QUALITY				3		// HIGHER NUMBER - WORSE QUALITY
-# define	SPR_NUM				both->get_info
-# define	C_COS				both->player.calc_cos
-# define	C_SIN				both->player.calc_sin
-# define	LEN_COUNTER			SPR_NUM[counter].len_counter
-# define	ROW_FLAG			both->schetchik.flag_color_row
-# define	RESIZE_SPRITE		1
-# define	SCREENSHOT_X		both->mlx.screenshot_x
-# define	SCREENSHOT_Y		both->mlx.screenshot_y
+# define SPEED					both->player.speedy
+# define TXT					both->map.map
+# define KARTA					both->map.karta
+# define XSTOP					(int)(PX + PLAYER_SCALE)/MINI_MAP_SCALE
+# define YSTOP					(int)(PY + PLAYER_SCALE)/MINI_MAP_SCALE
+# define NUM					both->counter
+# define RAYS					both->mlx.rays
+# define FIX_ANGLE				(float)(ANGLE/RAYS)
+# define X_STOP					(int)(OLD1/MINI_MAP_SCALE)
+# define Y_STOP					(int)(OLD2/MINI_MAP_SCALE)
+# define PRESS_W				both->player.move_w
+# define PRESS_A				both->player.move_a
+# define PRESS_S				both->player.move_s
+# define PRESS_D				both->player.move_d
+# define PRESS_ROT				both->player.move_rot
+# define HIDE_MAP				both->map.map_hide
+# define FLOOR_COLOR			0x777777
+# define SKY_COLOR				0xB3FFF1
+# define white_space			" \n\t\v\f\r"
+# define OLD1					both->player.old_x
+# define OLD2					both->player.old_y
+# define LEVEL					both->drawing.height
+# define DRAW_Y					both->drawing.y_for_me
+# define DRAW_X					both->drawing.x_for_me
+# define SCALER					both->drawing.scale_for_me
+# define SP_COUNTER				both->schetchik.sprite_counter
+# define SPR_NUM				both->get_info
+# define C_COS					both->player.calc_cos
+# define C_SIN					both->player.calc_sin
+# define LEN_COUNTER			SPR_NUM[counter].len_counter
+# define ROW_FLAG				both->schetchik.flag_color_row
+# define SCREENSHOT_X			both->mlx.screenshot_x
+# define SCREENSHOT_Y			both->mlx.screenshot_y
 
 typedef struct		s_mlx
 {
@@ -93,8 +111,7 @@ typedef struct		s_minimap
 	float			mpy;
 }					t_minimap;
 
-
-typedef struct 		s_map
+typedef struct		s_map
 {
 	int				fd;
 	char			**map;
@@ -118,7 +135,6 @@ typedef	struct		s_sprite_info
 	int				len_counter;
 }					t_sprite_info;
 
-
 typedef struct		s_data
 {
 	void			*img;
@@ -137,17 +153,17 @@ typedef struct		s_drawing
 	float			sprite_counter;
 }					t_drawing;
 
-typedef struct 		s_sprite
+typedef struct		s_sprite
 {
-    void    	    *img;
-    char    	    *addr;
+	void			*img;
+	char			*addr;
 	int				width;
 	int				height;
 	char			*path;
-    int				bits_per_pixel;
-    int				line_length;
-    int				endian;
-	int				color_mass[500][500]; // ВРЕМЕННЫЙ КОСТЫЛЬ
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	int				color_mass[500][500];
 	int				*color_row;
 	float			res;
 	float			fix_res_y;
@@ -181,30 +197,30 @@ typedef	struct		s_counters
 	int				save_flag;
 }					t_counters;
 
-typedef struct	s_both
+typedef struct		s_both
 {
-	t_mlx				mlx;
-	t_player			player;
-	t_data				img;
-	t_data				minimap;
-	t_data				miniplayer;
-	t_sprite			north;
-	t_sprite			south;
-	t_sprite			east;
-	t_sprite			west;
-	t_sprite			sprite;
-	t_drawing			drawing;
-	t_sprite_info		get_info[50];
-	int					flag_minimap;
-	int					flag_wall;
-	int					flag_sprite;
-	int					counter;
-	t_counters			schetchik;
-	t_map				map;
-	float				*cos_table;
-	int					save_from_crash;
-	int					color;
-}						t_both;
+	t_mlx			mlx;
+	t_player		player;
+	t_data			img;
+	t_data			minimap;
+	t_data			miniplayer;
+	t_sprite		north;
+	t_sprite		south;
+	t_sprite		east;
+	t_sprite		west;
+	t_sprite		sprite;
+	t_drawing		drawing;
+	t_sprite_info	get_info[50];
+	int				flag_minimap;
+	int				flag_wall;
+	int				flag_sprite;
+	int				counter;
+	t_counters		schetchik;
+	t_map			map;
+	float			*cos_table;
+	int				save_from_crash;
+	int				color;
+}					t_both;
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	paint_move(t_both *both);
@@ -215,7 +231,6 @@ void	error_message(char *message, t_both *both);
 void	fill_map(t_both *both);
 void	parse_map(t_both *both);
 void	recieve_map(t_both *both);
-void	draw_map(char **a);				// НЕ ЗАБЫТЬ УБРАТЬ!!! ТАМ ПРИНТФ!! ЪУЪ!!!
 void	get_minimap(t_both *both);
 void	paint_square(int x, int y, t_data *img, int color);
 void	player_view(t_both *both);

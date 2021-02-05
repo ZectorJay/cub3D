@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:51:30 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:40:10 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 10:11:04 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void paint_square(int x, int y, t_data *img, int color)
 
 void	paint_move(t_both *both)
 {
-	if (press_a)
+	if (PRESS_A)
 		a_move(both);
-	if (press_s)
+	if (PRESS_S)
 		s_move(both);
-	if (press_d)
+	if (PRESS_D)
 		d_move(both);
-	if (press_w)
+	if (PRESS_W)
 		w_move(both);
-	if (press_rot)
+	if (PRESS_ROT)
 		rotate_player(both);
 }

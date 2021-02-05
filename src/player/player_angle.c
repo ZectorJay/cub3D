@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 09:58:09 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ void			check_wall(t_both *both, float x, float y)
 
 	xx = (int)x / MINI_MAP_SCALE;
 	yy = (int)y / MINI_MAP_SCALE;
-	if (xx < x_stop && yy == y_stop)
+	if (xx < X_STOP && yy == Y_STOP)
 	{
 		check_row(both, &both->west, y);
 		both->flag_wall = 1;
 	}
-	else if (xx == x_stop && yy > y_stop)
+	else if (xx == X_STOP && yy > Y_STOP)
 	{
 		check_row(both, &both->north, x);
 		both->flag_wall = 2;
 	}
-	else if (xx > x_stop && yy == y_stop)
+	else if (xx > X_STOP && yy == Y_STOP)
 	{
 		check_row(both, &both->east, y);
 		both->flag_wall = 3;
 	}
-	else if (yy < y_stop && xx == x_stop)
+	else if (yy < Y_STOP && xx == X_STOP)
 	{
 		check_row(both, &both->south, x);
 		both->flag_wall = 4;
@@ -78,11 +78,11 @@ void			player_angle(t_both *both)
 	C_SIN = sin(PROT - (FIX_ANGLE * end));
 	NUM = 0;
 	SP_COUNTER = 0;
-	while (KARTA[y_stop][x_stop] != '1' && (len += 0.1) > 0)
+	while (KARTA[Y_STOP][X_STOP] != '1' && (len += 0.1) > 0)
 	{
 		OLD1 -= C_COS;
 		OLD2 -= C_SIN;
-		if (KARTA[y_stop][x_stop] == '1')
+		if (KARTA[Y_STOP][X_STOP] == '1')
 		{
 			check_wall(both, OLD1 + C_COS,
 			OLD2 + C_SIN);
@@ -96,7 +96,7 @@ void			player_angle(t_both *both)
 	C_SIN = sin(PROT - (FIX_ANGLE * end));
 			NUM++;
 		}
-		if (KARTA[y_stop][x_stop] == '2')
+		if (KARTA[Y_STOP][X_STOP] == '2')
 			check_sprite(both, len, PROT - (FIX_ANGLE * end));
 	}
 }

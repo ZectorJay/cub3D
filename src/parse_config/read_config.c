@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:20:24 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 10:10:06 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,10 @@ void	get_map(t_both *both)
 
 void	parse_map(t_both *both)
 {
-	press_w = 0;
-	press_a = 0;
-	press_s = 0;
-	press_d = 0;
+	PRESS_W = 0;
+	PRESS_A = 0;
+	PRESS_S = 0;
+	PRESS_D = 0;
 	SPEED = SPEED_NORM;
 	OLD1 = 0;
 	OLD2 = 0;
