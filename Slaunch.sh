@@ -1,2 +1,2 @@
 make
-./a.out maps/map.cub -save
+./a.out maps/map.cub --save

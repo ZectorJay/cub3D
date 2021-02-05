@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:36:08 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 13:24:13 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:13:52 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	first_draw(t_both *both)
 	player_angle(both);
 	sprite_works(both);
 	if (both->schetchik.save_flag == 1)
+	{
+		write(1, "\n w8 a moment\n", 14);
 		make_screenshot(both);
+	}
 	mlx_put_image_to_window(CONNECT, WIN, both->img.img, 0, 0);
 }
 
