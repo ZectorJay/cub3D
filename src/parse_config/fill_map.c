@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 10:21:49 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/06 16:32:21 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,22 @@ void	get_minimap(t_both *both)
 		}
 		else if (KARTA[j][i] == '2')
 			x += MINI_MAP_SCALE;
-		else if (ft_isspace(KARTA[j][i]))
+		else if (KARTA[j][i] == ' ')
+		{
+			KARTA[j][i] = '1';
 			x += MINI_MAP_SCALE;
+		}
 		else if (KARTA[j][i] == '0')
 			x += MINI_MAP_SCALE;
 		else
+		{
+			ft_putstr("Why is there - ");
+			write(1, &KARTA[j][i], 1);
+			ft_putstr("(ASCII code - ");
+			ft_putnbr_fd(KARTA[j][i], 1);
+			write(1, ")?\n", 3);
 			error_message("I found some wrong things at map", both);
+		}
 		if (!KARTA[j][i + 1])
 		{
 			j++;

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:58:09 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/06 18:01:38 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void			check_wall(t_both *both, float x, float y)
 
 static void		fix_params(t_both *both, int *number, int *end, float *len)
 {
+	int		num;
 
+	num = *end;
 	if (number)
 		*(int*)number = (int)(-1 * (RAYS / 2));
 	if (end)
@@ -58,6 +60,8 @@ static void		fix_params(t_both *both, int *number, int *end, float *len)
 	OLD1 = (PX + PLAYER_SCALE);
 	OLD2 = (PY + PLAYER_SCALE);
 	*(float*)len = 0;
+	C_COS = cos(PROT - (FIX_ANGLE * num));
+	C_SIN = sin(PROT - (FIX_ANGLE * num));
 }
 
 void			sprite_works(t_both *both)
@@ -74,26 +78,26 @@ void			player_angle(t_both *both)
 	int		end;	
 	fix_params(both, &number, &end, &len);
 	clear_sprites(both);
-	C_COS = cos(PROT - (FIX_ANGLE * end));
-	C_SIN = sin(PROT - (FIX_ANGLE * end));
+	// C_COS = cos(PROT - (FIX_ANGLE * end));
+	// C_SIN = sin(PROT - (FIX_ANGLE * end));
 	NUM = 0;
 	SP_COUNTER = 0;
-	while (KARTA[Y_STOP][X_STOP] != '1' && (len += 0.1) > 0)
+	while (KARTA[Y_STOP][X_STOP] != '1')
 	{
+		len += 0.1;
 		OLD1 -= C_COS;
 		OLD2 -= C_SIN;
 		if (KARTA[Y_STOP][X_STOP] == '1')
 		{
-			check_wall(both, OLD1 + C_COS,
-			OLD2 + C_SIN);
-			if (end > number)
+			check_wall(both, OLD1 + C_COS, OLD2 + C_SIN);
+			if (end > number + 1)
 				end--;
 			else
 				break ;
 			try3d(both, len * both->cos_table[NUM]);
 			fix_params(both, 0, 0, &len);
-	C_COS = cos(PROT - (FIX_ANGLE * end));
-	C_SIN = sin(PROT - (FIX_ANGLE * end));
+	// C_COS = cos(PROT - (FIX_ANGLE * end));
+	// C_SIN = sin(PROT - (FIX_ANGLE * end));
 			NUM++;
 		}
 		if (KARTA[Y_STOP][X_STOP] == '2')

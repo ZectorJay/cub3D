@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:58:09 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/06 14:40:15 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	clear_sprites(t_both *both)
 {
 	SP_COUNTER = -1;
-	while (++SP_COUNTER < 50)
+	while (++SP_COUNTER < 350)
 	{
 		both->get_info[SP_COUNTER].x_hit = 0;
 		both->get_info[SP_COUNTER].y_hit = 0;
@@ -23,6 +23,12 @@ void	clear_sprites(t_both *both)
 		both->get_info[SP_COUNTER].angle = 0;	
 		both->get_info[SP_COUNTER].rays = 0;	
 		both->get_info[SP_COUNTER].position = 0;
+		both->get_info[SP_COUNTER].f_x_hit = 0;
+		both->get_info[SP_COUNTER].f_y_hit = 0;
+		both->get_info[SP_COUNTER].first_angle = 0;
+		both->get_info[SP_COUNTER].av_len = NULL;
+		both->get_info[SP_COUNTER].len_counter = 0;
+		// free(&both->get_info[SP_COUNTER]);
 	}
 	SP_COUNTER = 0;
 }
@@ -66,7 +72,7 @@ void	check_sprite(t_both *both, float len, float angle)
 		both->get_info[SP_COUNTER].f_x_hit = (float)(OLD1/MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].y_hit = Y_STOP;
 		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2/MINI_MAP_SCALE);
-		both->get_info[SP_COUNTER].len = 0;//len;
+		both->get_info[SP_COUNTER].len = 0;
 		SPR_NUM[SP_COUNTER].av_len = malloc(sizeof(float) * RAYS);
 		both->get_info[SP_COUNTER].first_angle = angle;
 		both->get_info[SP_COUNTER].angle = angle;

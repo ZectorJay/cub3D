@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 11:45:08 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/06 14:54:52 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 ** CHANGABLE DEFINES
 */
 
-# define COLUMN_HEIGHT			5
+# define COLUMN_HEIGHT			7
 # define MINI_MAP_SCALE			160
 # define ROTATION_SPEED			4
 # define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
@@ -210,7 +210,7 @@ typedef struct		s_both
 	t_sprite		west;
 	t_sprite		sprite;
 	t_drawing		drawing;
-	t_sprite_info	get_info[50];
+	t_sprite_info	get_info[350];
 	int				flag_minimap;
 	int				flag_wall;
 	int				flag_sprite;

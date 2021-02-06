@@ -69,8 +69,8 @@ float	doing_stuff(int y, int end, t_both *both)
 		return ((float)((both->east.height) / (endf - yf)))/QUALITY;
 	else if (both->flag_wall == 4)
 		return ((float)((both->south.height) / (endf - yf)))/QUALITY;
-	else
-		error_message("WTF", both);
+	// else
+	// 	error_message("WTF", both);
 	return (0);
 }
 
