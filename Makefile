@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/05 09:14:29 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/07 11:14:47 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS		=	cub3d.c\
 				errors.c\
 				make3d.c\
 				sprite3d.c\
+				sprite3d2.c\
 				${PATH_CONF}read_config.c\
 				${PATH_CONF}fill_map.c\
 				${PATH_CONF}check_file.c\

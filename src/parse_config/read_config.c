@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 10:10:06 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 13:20:54 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,39 +81,35 @@ void	get_resolution(t_both *both)
 		RES_Y = 1439;
 	if (RES_X >= 2560)
 		RES_X = 2559;
-	both->mlx.half_res_y = both->mlx.res_y/2;
-	both->mlx.rays = RES_X/QUALITY;
+	both->mlx.half_res_y = both->mlx.res_y / 2;
+	both->mlx.rays = RES_X / QUALITY;
 }
 
 void	get_map(t_both *both)
 {
 	char	*line;
-	int		i;
 	int		reading;
 	char	**temp;
 	int		j;
 
 	reading = 1;
-	i = 1;
+	NUM = 1;
 	while (reading)
 	{
 		j = 0;
 		reading = get_next_line(both->map.fd, &line);
 		temp = TXT;
-		if(!(TXT = malloc((i + 1) * sizeof(char *))))
+		if (!(TXT = malloc((++NUM) * sizeof(char *))))
 			error_message("POSHEL NAHUY", both);
 		if (temp)
-		{
 			while (temp[j])
 			{
 				TXT[j] = temp[j];
 				j++;
 			}
-		}
 		free(temp);
 		TXT[j++] = line;
 		TXT[j] = 0;
-		i++;
 	}
 }
 

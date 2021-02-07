@@ -1,8 +1,8 @@
-R   2000       1200
+R   12001      6001
 #4294967994
 
 NO ./pics/size1.xpm 
-SO  ./pics/devo4ka.xpm 
+SO  ./pics/doggy.xpm 
 WE  ./pics/kitty.xpm 
 EA  ./pics/pesok.xpm
 

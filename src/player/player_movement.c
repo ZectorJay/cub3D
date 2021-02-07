@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:16:35 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/06 15:48:45 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 12:30:01 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	rotate_player(t_both *both)
 {
 	if (PRESS_ROT == -1)
-		PROT -= (0.1 * ROTATION_SPEED/10);
+		PROT -= (0.1 * ROTATION_SPEED / 10);
 	if (PRESS_ROT == 1)
-		PROT += (0.1 * ROTATION_SPEED/10);
+		PROT += (0.1 * ROTATION_SPEED / 10);
 	if (fabs(PROT) >= 2 * M_PI)
 		PROT = 0;
 }
@@ -66,5 +66,5 @@ int		key_release(int keycode, t_both *both)
 		PRESS_D = 0;
 	if (keycode == 13 || keycode == 126)
 		PRESS_W = 0;
-	return (0);	
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/06 14:54:52 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 14:44:33 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 ** HIGHER QUALITY NUMBER - WORSE QUALITY OF PICTURE (AND FASTER GAME)
 */
 
-# define QUALITY				3
+# define QUALITY				2
 
 /*
 ** DONT TOUCH THOSE
@@ -92,6 +92,12 @@
 # define ROW_FLAG				both->schetchik.flag_color_row
 # define SCREENSHOT_X			both->mlx.screenshot_x
 # define SCREENSHOT_Y			both->mlx.screenshot_y
+# define END					both->schetchik.end
+# define WEST					both->west
+# define EAST					both->east
+# define NORTH					both->north
+# define SOUTH					both->south
+# define SPRITE					both->sprite
 
 typedef struct		s_mlx
 {
@@ -163,7 +169,7 @@ typedef struct		s_sprite
 	int				bits_per_pixel;
 	int				line_length;
 	int				endian;
-	int				color_mass[500][500];
+	int				color_mass[600][600];
 	int				*color_row;
 	float			res;
 	float			fix_res_y;
@@ -195,6 +201,7 @@ typedef	struct		s_counters
 	int				sprite_counter;
 	int				flag_color_row;
 	int				save_flag;
+	int				end;
 }					t_counters;
 
 typedef struct		s_both
@@ -262,5 +269,9 @@ void	sprite_works(t_both *both);
 void	make_screenshot(t_both *both);
 void	find_texture(t_both *both);
 int		check_file_name(char *file);
+float	fix_sprite(t_both *both);
+float	draw_left(t_both *both, float another_one, float add);
+float	draw_right(t_both *both, float another_one, float add);
+void	skip_steps(t_both *both, float *plus, float scale_texture);
 
 #endif
