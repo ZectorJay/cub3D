@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 14:44:33 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 16:35:54 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 # include <sys/types.h>
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
+# include "dylib/mlx.h"
 
 /*
 ** CHANGABLE DEFINES
 */
 
-# define COLUMN_HEIGHT			7
+# define COLUMN_HEIGHT			5
 # define MINI_MAP_SCALE			160
 # define ROTATION_SPEED			4
 # define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
@@ -45,7 +46,7 @@
 ** HIGHER QUALITY NUMBER - WORSE QUALITY OF PICTURE (AND FASTER GAME)
 */
 
-# define QUALITY				2
+# define QUALITY				3
 
 /*
 ** DONT TOUCH THOSE
@@ -238,7 +239,6 @@ void	error_message(char *message, t_both *both);
 void	fill_map(t_both *both);
 void	parse_map(t_both *both);
 void	recieve_map(t_both *both);
-void	get_minimap(t_both *both);
 void	paint_square(int x, int y, t_data *img, int color);
 void	player_view(t_both *both);
 void	w_move(t_both *both);
@@ -249,7 +249,7 @@ void	rotate_player(t_both *both);
 void	player_angle(t_both *both);
 void	try3d(t_both *both, float len);
 void	create_minimap(t_both *both);
-void	get_mini_map(t_both *both);
+void	get_minimap(t_both *both);
 void	get_north(t_both *both);
 void	get_west(t_both *both);
 void	get_east(t_both *both);

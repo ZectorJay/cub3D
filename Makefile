@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/07 11:14:47 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/07 16:35:59 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SRCS		=	cub3d.c\
 				${PATH_CONF}read_config.c\
 				${PATH_CONF}fill_map.c\
 				${PATH_CONF}check_file.c\
-				${PATH_CONF}fill_real_map.c\
 				${PATH_GNL}get_next_line.c\
 				${PATH_GNL}get_next_line_utils.c\
 				${PATH_PLAYER}player_movement.c\
@@ -55,7 +54,7 @@ RM			= rm -f
 
 CFLAGS		= #-Wall -Wextra -Werror 
 
-FRAME		=	-lmlx -framework OpenGL -framework AppKit
+FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit
 
 .c.o:		= ${CC} -g ${CFLAGS} -c $< -o ${<:.c=.o}
 

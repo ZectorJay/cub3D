@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 10:04:09 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 15:57:05 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			player_angle(t_both *both)
 		if (KARTA[Y_STOP][X_STOP] == '1')
 		{
 			check_wall(both, OLD1 + C_COS, OLD2 + C_SIN);
-			if (END > number + 1)
+			if (END > number)
 				END--;
 			else
 				break ;

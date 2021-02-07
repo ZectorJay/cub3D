@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 13:20:54 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 16:47:39 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,16 @@ void	get_resolution(t_both *both)
 	if (TXT[j][0] != 'R')
 		error_message("No Resolution", both);
 	parse_resolution(TXT[j], both);
-	SCREENSHOT_X = RES_X;
-	SCREENSHOT_Y = RES_Y;
+	printf("RES_Y = %d\n", RES_Y);
 	if (RES_Y >= 1440)
-		RES_Y = 1439;
+		mlx_get_screen_size(CONNECT, &SCREENSHOT_X, &RES_Y);
+	printf("RES_Y = %d\n", RES_Y);
+	printf("RES_X = %d\n", RES_X);
 	if (RES_X >= 2560)
-		RES_X = 2559;
+		mlx_get_screen_size(CONNECT, &RES_X, &SCREENSHOT_Y);
+	printf("RES_X = %d\n", RES_X);
+	if (both->schetchik.save_flag && both->mlx.res_x >= 2550)
+		both->mlx.res_x = 2450;
 	both->mlx.half_res_y = both->mlx.res_y / 2;
 	both->mlx.rays = RES_X / QUALITY;
 }
@@ -100,7 +104,7 @@ void	get_map(t_both *both)
 		reading = get_next_line(both->map.fd, &line);
 		temp = TXT;
 		if (!(TXT = malloc((++NUM) * sizeof(char *))))
-			error_message("POSHEL NAHUY", both);
+			error_message("fail memory alloc", both);
 		if (temp)
 			while (temp[j])
 			{

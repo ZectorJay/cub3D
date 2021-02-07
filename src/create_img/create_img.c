@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 15:22:18 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 09:43:07 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 15:48:39 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	fill_cos(t_both *both)
 
 void	create_minimap(t_both *both)
 {
-	create_img(both, &both->minimap, 400, 170);
 	get_minimap(both);
 	create_img(both, &both->img, RES_X, RES_Y);
 	both->cos_table = malloc(sizeof(float*) * both->mlx.res_x / QUALITY);

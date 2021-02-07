@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:36:08 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/05 16:13:52 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 16:52:37 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	first_draw(t_both *both)
 	sprite_works(both);
 	if (both->schetchik.save_flag == 1)
 	{
-		write(1, "\n w8 a moment\n", 14);
+		write(1, "\n w8 a moment, making screenshot\n", 14);
 		make_screenshot(both);
 	}
 	mlx_put_image_to_window(CONNECT, WIN, both->img.img, 0, 0);
@@ -56,7 +56,7 @@ void	check_args(t_both *both, char **argv, int argc)
 
 int		x_cross_close(t_both *both)
 {
-	error_message("Good bye", both);
+	error_message("Just kidding\nGood bye", both);
 	return (1);
 }
 
@@ -68,9 +68,11 @@ int		main(int argc, char **argv)
 		check_args(&both, argv, argc);
 	else
 		error_message("Dude, where is map?", &both);
-	both.mlx.con = mlx_init();
-	both.mlx.window = mlx_new_window(both.mlx.con,
-	both.mlx.res_x, both.mlx.res_y, "Cub3D");
+	if (!(both.mlx.con = mlx_init()))
+		error_message("Fail initializing mlx", &both);
+	if (!(both.mlx.window = mlx_new_window(both.mlx.con,
+	both.mlx.res_x, both.mlx.res_y, "Cub3D")))
+		error_message("Fail opening window", &both);
 	create_minimap(&both);
 	find_texture(&both);
 	first_draw(&both);

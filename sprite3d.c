@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 06:42:40 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 14:47:43 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/07 15:53:45 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void			sprite3d(t_both *both, float another_one)
 	{
 		SCALER = RES_X / RAYS;
 		DRAW_X = SCALER * SPR_NUM[SP_COUNTER].position;
-		while (SCALER--)
+		while (SCALER-- > 0)
 		{
 			if (DRAW_Y > 0 && DRAW_X < RES_X &&
 			DRAW_X > 0 && DRAW_Y < RES_Y && another_one > 0 &&
