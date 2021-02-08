@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 08:05:07 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/06 10:43:44 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 22:13:02 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ void	header(t_both *both, int fd)
 	int				filesize;
 	unsigned char	*img;
 	int				add_bytes;
-	unsigned char	bmp_header[54];
-	
-	if (RES_X % 4 != 0)
-		RES_X -= (RES_X % 4);
+
 	add_bytes = (4 - ((int)RES_X * 3) % 4) % 4;
-	img = (unsigned char *)malloc(3 * RES_X * RES_Y);
+	printf("add bytes = %d\n", add_bytes);
+	if (!(img = (unsigned char *)malloc(3 * RES_X * RES_Y + 20)))
+		error_message("fail allocating memory for bmp", both);
 	filesize = 54 + 3 * RES_X * RES_Y;
-	ft_bzero(img, filesize);
+	ft_bzero(img, filesize - 34);
 	img[0] = (unsigned char)('B');
 	img[1] = (unsigned char)('M');
 	convert_bmp(img + 2, filesize);
@@ -42,19 +41,20 @@ void	header(t_both *both, int fd)
 	convert_bmp(img + 22, RES_Y);
 	img[26] = (unsigned char)1;
 	img[28] = (unsigned char)24;
-	write(fd, img, 54);
+	if (write(fd, img, 54) < 0)
+		error_message("fail writing to bmp", both);
 }
 
 void	write_in_bmp(t_both *both, int fd)
 {
 	int				add_bytes;
-	unsigned char	additional[3];
 	int				color;
 	char			*dst;
 
 	DRAW_Y = RES_Y - 1;
 	add_bytes = (4 - ((int)RES_X * 3) % 4) % 4;
-	ft_bzero(additional, 3);
+	if (add_bytes == 4)
+		add_bytes = 0;
 	while (DRAW_Y > 0)
 	{
 		DRAW_X = 0;
@@ -73,15 +73,34 @@ void	write_in_bmp(t_both *both, int fd)
 	}
 }
 
-void	make_screenshot(t_both *both)
+void	make_screenshot2(t_both *both)
 {
 	int				fd;
 
+	RES_X -= 1;
+	if (RES_X % 4 != 0)
+		RES_X -= (RES_X % 4);
+	RES_Y -= 1;
 	if ((fd = open("screenshot.bmp", O_WRONLY |
 	O_CREAT, 0777 | O_TRUNC | O_APPEND)) < 0)
 		error_message("fail to create .bmp", both);
 	header(both, fd);
 	write_in_bmp(both, fd);
-	close(fd);
+	if (close(fd) < 0)
+		error_message("fail closing file", both);
 	error_message("Screenshot was made, enjoy", both);
+}
+
+void	make_screenshot(t_both *both)
+{
+	int				fd;
+	
+	if ((fd = open("screenshot.bmp", O_WRONLY |
+	O_CREAT, 0777 | O_TRUNC | O_APPEND)) < 0)
+		error_message("fail to create .bmp", both);
+	header(both, fd);
+	write_in_bmp(both, fd);
+	if (close(fd) < 0)
+		error_message("fail closing file", both);
+		make_screenshot2(both);
 }

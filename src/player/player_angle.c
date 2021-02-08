@@ -6,13 +6,13 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 15:57:05 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 19:06:43 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void			check_row(t_both *both, t_sprite *data, int x)
+void			check_row(t_sprite *data, int x)
 {
 	if (x > MINI_MAP_SCALE)
 		x %= MINI_MAP_SCALE;
@@ -28,22 +28,22 @@ void			check_wall(t_both *both, float x, float y)
 	yy = (int)y / MINI_MAP_SCALE;
 	if (xx < X_STOP && yy == Y_STOP)
 	{
-		check_row(both, &both->west, y);
+		check_row(&both->west, y);
 		both->flag_wall = 1;
 	}
 	else if (xx == X_STOP && yy > Y_STOP)
 	{
-		check_row(both, &both->north, x);
+		check_row(&both->north, x);
 		both->flag_wall = 2;
 	}
 	else if (xx > X_STOP && yy == Y_STOP)
 	{
-		check_row(both, &both->east, y);
+		check_row(&both->east, y);
 		both->flag_wall = 3;
 	}
 	else if (yy < Y_STOP && xx == X_STOP)
 	{
-		check_row(both, &both->south, x);
+		check_row(&both->south, x);
 		both->flag_wall = 4;
 	}
 }

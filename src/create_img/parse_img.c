@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 21:05:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/01/28 02:02:02 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:46:14 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int		search_texture(t_both *both, char letter, char letter2)
 	while (TXT[++i])
 	{
 		j = 0;
-		while (ft_isspace(TXT[i][j]) || TXT[i][j] == letter)
+		while ((TXT[i][j]) == ' ' || TXT[i][j] == letter)
 		{
 			if (TXT[i][j] == letter && TXT[i][j + 1] == letter2)
-				if(ft_isspace(TXT[i][j + 2]) || letter2 == ' ')
+				if((TXT[i][j + 2]) == ' ' || letter2 == ' ')
 				{
 					flag = 1;
 					break;
@@ -38,7 +38,7 @@ int		search_texture(t_both *both, char letter, char letter2)
 				break ;
 	}
 	if (flag == 0)
-		error_message("fail texture", both);
+		error_message("fail config (way to texture or color)", both);
 	return (i);
 }
 

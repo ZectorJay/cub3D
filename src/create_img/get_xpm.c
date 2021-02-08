@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 13:30:18 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 19:01:25 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		fill_no_color(t_both *both, t_sprite *data, int counter)
 {
 	int		i;
 	int		y;
-	char	*dst;
 	int		x;
 
 	x = 0;
@@ -60,7 +59,7 @@ void	get_sprite_color(t_both *both, t_sprite *data)
 	data->color_mass[counter][0] = '\0';
 }
 
-void	get_color(t_both *both, t_sprite *data)
+void	get_color(t_sprite *data)
 {
 	float	x;
 	int		y;
@@ -100,7 +99,7 @@ void	get_north(t_both *both)
 	both->north.addr = mlx_get_data_addr(both->north.img,
 	&both->north.bits_per_pixel,
 	&both->north.line_length, &both->north.endian);
-	get_color(both, &both->north);
+	get_color(&both->north);
 }
 
 void	get_south(t_both *both)
@@ -114,7 +113,7 @@ void	get_south(t_both *both)
 	both->south.addr = mlx_get_data_addr(both->south.img,
 	&both->south.bits_per_pixel,
 	&both->south.line_length, &both->south.endian);
-	get_color(both, &both->south);
+	get_color(&both->south);
 }
 
 void	get_east(t_both *both)
@@ -128,7 +127,7 @@ void	get_east(t_both *both)
 	both->east.addr = mlx_get_data_addr(both->east.img,
 	&both->east.bits_per_pixel,
 	&both->east.line_length, &both->east.endian);
-	get_color(both, &both->east);
+	get_color(&both->east);
 }
 
 void	get_west(t_both *both)
@@ -142,7 +141,7 @@ void	get_west(t_both *both)
 	both->west.addr = mlx_get_data_addr(both->west.img,
 	&both->west.bits_per_pixel,
 	&both->west.line_length, &both->west.endian);
-	get_color(both, &both->west);
+	get_color(&both->west);
 }
 
 void	get_sprite(t_both *both)
@@ -159,5 +158,5 @@ void	get_sprite(t_both *both)
 	if (RESIZE_SPRITE == 0)
 		get_sprite_color(both, &both->sprite);
 	else
-		get_color(both, &both->sprite);
+		get_color(&both->sprite);
 }

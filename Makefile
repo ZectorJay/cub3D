@@ -6,13 +6,13 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/08 14:14:47 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/08 18:54:36 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	сub3D
 
-INCLUDE		=	./cub3d.h get_next_line/get_next_line.h
+INCLUDE		=	./cub3d.h get_next_line/get_next_line.h mlx/mlx.h dylib/mlx.h
 
 PATH_CONF	=	./src/parse_config/
 
@@ -53,7 +53,7 @@ CC			= gcc
 
 RM			= rm -f
 
-CFLAGS		= #-Wall -Wextra -Werror 
+CFLAGS		= -Wall -Wextra -Werror 
 
 FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit
 

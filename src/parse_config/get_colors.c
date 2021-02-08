@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 17:32:01 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 18:59:18 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_leftovers(t_both *both, char *color_string)
 		}
 }
 
-int		mix_colors(int red, int green, int blue, t_both *both)
+int		mix_colors(int red, int green, int blue)
 {
 	int color;
 
@@ -44,14 +44,15 @@ int		mix_colors(int red, int green, int blue, t_both *both)
 	return (color);
 }
 
-int		get_color(t_both *both, char *color_string, int color)
+char	*get_num(t_both *both, char *color_string, int *color)
 {
 	if (ft_isdigit(*color_string))
-		color = ft_atoi(color_string);
+		*color = ft_atoi(color_string);
 	else
 		error_message("there is wrong symbol in color", both);
 	while (ft_isdigit(*color_string))
 		color_string++;
+	return (color_string);
 }
 
 void	parse_color(t_both *both, char *color_string, int *color)
@@ -60,26 +61,22 @@ void	parse_color(t_both *both, char *color_string, int *color)
 	int	green;
 	int	blue;
 
-	red = ft_atoi(color_string);
-	while (ft_isdigit(*color_string))
-		color_string++;
+	color_string = get_num(both, color_string, &red);
 	if (*color_string == ',')
 		color_string++;
 	else
-		error_message ("wrong separate symbol", both);
-		green = ft_atoi(color_string);
-	while (ft_isdigit(*color_string))
-		color_string++;
+		error_message("wrong separate symbol", both);
+	color_string = get_num(both, color_string, &green);
 	if (*color_string == ',')
 		color_string++;
 	else
-		error_message ("wrong separate symbol", both);
-	blue = ft_atoi(color_string);
+		error_message("wrong separate symbol", both);
+	color_string = get_num(both, color_string, &blue);
 	check_leftovers(both, color_string);
 	if (red > 255 || green > 255 || blue > 255
 	|| red < 0 || green < 0 || blue < 0)
 		error_message("wrong number in color", both);
-	*color = mix_colors(red, green, blue, both);
+	*color = mix_colors(red, green, blue);
 }
 
 void	find_color(t_both *both, int i, int *color)
