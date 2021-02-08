@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 16:35:54 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 16:04:51 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@
 # define PRESS_D				both->player.move_d
 # define PRESS_ROT				both->player.move_rot
 # define HIDE_MAP				both->map.map_hide
-# define FLOOR_COLOR			0x777777
-# define SKY_COLOR				0xB3FFF1
+# define FLOOR_COLOR			both->schetchik.floor_color
+# define SKY_COLOR				both->schetchik.sky_color
 # define white_space			" \n\t\v\f\r"
 # define OLD1					both->player.old_x
 # define OLD2					both->player.old_y
@@ -203,6 +203,8 @@ typedef	struct		s_counters
 	int				flag_color_row;
 	int				save_flag;
 	int				end;
+	int				floor_color;
+	int				sky_color;
 }					t_counters;
 
 typedef struct		s_both
@@ -273,5 +275,6 @@ float	fix_sprite(t_both *both);
 float	draw_left(t_both *both, float another_one, float add);
 float	draw_right(t_both *both, float another_one, float add);
 void	skip_steps(t_both *both, float *plus, float scale_texture);
+void	get_floor_sky_colors(t_both *both);
 
 #endif

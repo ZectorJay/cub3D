@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 16:47:39 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 13:27:01 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ void	parse_map(t_both *both)
 	get_map(both);
 	get_resolution(both);
 	recieve_map(both);
+	get_floor_sky_colors(both);
 	SCALER = RES_X / RAYS;
 }

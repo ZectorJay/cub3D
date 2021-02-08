@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/06 08:59:23 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/08 13:30:18 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	get_color(t_both *both, t_sprite *data)
 void	get_north(t_both *both)
 {
 	int i;
-	int j;
 
 	i = search_texture(both, 'N', 'O');
 	skip_spaces(both, i, &both->north);
@@ -107,7 +106,6 @@ void	get_north(t_both *both)
 void	get_south(t_both *both)
 {
 	int i;
-	int j;
 
 	i = search_texture(both, 'S', 'O');
 	skip_spaces(both, i, &both->south);
@@ -122,7 +120,6 @@ void	get_south(t_both *both)
 void	get_east(t_both *both)
 {
 	int i;
-	int j;
 
 	i = search_texture(both, 'E', 'A');
 	skip_spaces(both, i, &both->east);
@@ -137,7 +134,6 @@ void	get_east(t_both *both)
 void	get_west(t_both *both)
 {
 	int i;
-	int j;
 
 	i = search_texture(both, 'W', 'E');
 	skip_spaces(both, i, &both->west);
@@ -152,7 +148,6 @@ void	get_west(t_both *both)
 void	get_sprite(t_both *both)
 {
 	int i;
-	int j;
 
 	i = search_texture(both, 'S', ' ');
 	skip_spaces(both, i, &both->sprite);

@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/07 16:35:59 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/08 14:14:47 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS		=	cub3d.c\
 				${PATH_CONF}read_config.c\
 				${PATH_CONF}fill_map.c\
 				${PATH_CONF}check_file.c\
+				${PATH_CONF}get_colors.c\
 				${PATH_GNL}get_next_line.c\
 				${PATH_GNL}get_next_line_utils.c\
 				${PATH_PLAYER}player_movement.c\
