@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 18:27:00 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 20:07:31 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ typedef	struct		s_counters
 	int				sky_color;
 	float			sprite_ending;
 	float			counter_end;
+	char			checker;
 }					t_counters;
 
 typedef struct		s_both
@@ -266,7 +267,7 @@ void	get_west(t_both *both);
 void	get_east(t_both *both);
 void	get_south(t_both *both);
 void	get_sprite(t_both *both);
-int		search_texture(t_both *both, char letter, char letter2);
+int		search_texture(t_both *both, char letter, char letter2, int i);
 void	skip_spaces(t_both *both, int i, t_sprite *name);
 void	check_sprite(t_both *both, float len, float angle);
 void	clear_sprites(t_both *both);

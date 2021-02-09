@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 18:59:18 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:11:49 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void	get_floor_sky_colors(t_both *both)
 	int	i;
 
 	i = -1;
-	i = search_texture(both, 'F', ' ');
+	i = search_texture(both, 'F', ' ', i);
 	find_color(both, i, &both->schetchik.floor_color);
-	i = search_texture(both, 'C', ' ');
+	i = search_texture(both, 'C', ' ', i);
 	find_color(both, i, &both->schetchik.sky_color);
 }

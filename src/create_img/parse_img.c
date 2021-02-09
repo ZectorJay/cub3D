@@ -6,39 +6,30 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 21:05:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 17:46:14 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:17:38 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int		search_texture(t_both *both, char letter, char letter2)
+int		search_texture(t_both *both, char letter, char letter2, int i)
 {
-	int i;
 	int j;
 	int flag;
 
 	flag = 0;
-	i = -1;
-	j = -1;
+	j = 0;
 	while (TXT[++i])
 	{
-		j = 0;
-		while ((TXT[i][j]) == ' ' || TXT[i][j] == letter)
-		{
-			if (TXT[i][j] == letter && TXT[i][j + 1] == letter2)
-				if((TXT[i][j + 2]) == ' ' || letter2 == ' ')
-				{
-					flag = 1;
-					break;
-				}
-			j++;
-		}
-			if(flag == 1)
-				break ;
+		if (TXT[i][j] == letter && TXT[i][j + 1] == letter2)
+			if((TXT[i][j + 2]) == ' ' || letter2 == ' ')
+			{
+				flag = 1;
+				break;
+			}
 	}
 	if (flag == 0)
-		error_message("fail config (way to texture or color)", both);
+		return (-1);
 	return (i);
 }
 

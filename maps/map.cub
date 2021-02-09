@@ -1,5 +1,4 @@
-R   2600     12001
-#4294967994
+R   1600     1200
 
 NO          ./pics/size1.xpm 
 SO  ./pics/doggy.xpm 
@@ -9,7 +8,6 @@ EA  ./pics/pesok.xpm
 S  ./pics/icecream.xpm  
 F       160,160,160
 C    210,255,255
-
 
 
         1111111111111111111111111

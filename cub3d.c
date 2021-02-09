@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:36:08 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 18:14:10 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 18:44:42 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		paint(t_both *both)
 		mlx_put_image_to_window(CONNECT, WIN, both->img.img, 0, 0);
 		mlx_string_put(CONNECT, WIN, RES_X - 80,
 		RES_Y - 70, 0xFF3300, "HMICKEY");
-		mlx_string_put(CONNECT, WIN, RES_X/2, RES_Y/2, 0xFF1100, "(-- --)");
+		mlx_string_put(CONNECT, WIN, RES_X / 2, RES_Y / 2, 0xFF1100, "(-- --)");
 	}
 	return (1);
 }
