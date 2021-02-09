@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 19:11:49 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 23:38:10 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	find_color(t_both *both, int i, int *color)
 	while((TXT[i][j]) == ' ')
 		j++;
 	j += 2;
-	if (!(color_string = ft_strtrim(TXT[i] + j, white_space)))
+	if (!(color_string = ft_strtrim(TXT[i] + j, WHITE_SPACE)))
 		error_message("fail allocate memory for color", both);
 	parse_color(both, color_string, color);
 	free(color_string);

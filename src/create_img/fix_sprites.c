@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:23:56 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 16:25:06 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 23:42:25 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	sort_sprite(t_both *both)
 	}
 }
 
-static void	fix_params(t_both *both, float *c_cos, float *c_sin, int finder, t_sprite_info *sprite)
+static void	fix_params(t_both *both, float *c_cos, float *c_sin,
+			int finder, t_sprite_info *sprite)
 {
 	SPRITE_OLD_X = PX + PLAYER_SCALE;
 	SPRITE_OLD_Y = PY + PLAYER_SCALE;
 	*c_cos = cos(sprite->first_angle - (FIX_ANGLE * finder));
 	*c_sin = sin(sprite->first_angle - (FIX_ANGLE * finder));
-
 }
-
+//GAVNO BESPOLEZNOE
 int	find_start_pos(t_both *both, t_sprite_info *sprite)
 {
 	float c_cos;

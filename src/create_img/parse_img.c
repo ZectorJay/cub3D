@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 21:05:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 19:17:38 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 23:38:23 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	skip_spaces(t_both *both, int i, t_sprite *name)
 	while(ft_isspace(TXT[i][j]))
 		j++;
 	j += 2;
-	file_name = ft_strtrim(TXT[i] + j, white_space);
+	file_name = ft_strtrim(TXT[i] + j, WHITE_SPACE);
 	if((fd = open(file_name, O_RDONLY)) == -1)
 	{
 		free(file_name);

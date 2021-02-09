@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 12:01:42 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 22:37:42 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	get_map(t_both *both)
 
 void	parse_map(t_both *both)
 {
+	int i;
+
 	PRESS_W = 0;
 	PRESS_A = 0;
 	PRESS_S = 0;
@@ -127,12 +129,14 @@ void	parse_map(t_both *both)
 	SPEED = SPEED_NORM;
 	OLD1 = 0;
 	OLD2 = 0;
+	PROT = 0;
 	HIDE_MAP = 0;
 	both->schetchik.save_flag = 0;
 	both->save_from_crash = 1;
 	get_map(both);
 	get_resolution(both);
-	recieve_map(both);
+	i = find_map(both);
+	KARTA = &TXT[i];
 	get_floor_sky_colors(both);
 	SCALER = RES_X / RAYS;
 }

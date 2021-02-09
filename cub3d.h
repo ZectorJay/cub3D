@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 20:07:31 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 23:36:10 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@
 # define HIDE_MAP				both->map.map_hide
 # define FLOOR_COLOR			both->schetchik.floor_color
 # define SKY_COLOR				both->schetchik.sky_color
-# define white_space			" \n\t\v\f\r"
+# define WHITE_SPACE			" \n\t\v\f\r"
+# define VALID_SYMBOLS			"102"
 # define OLD1					both->player.old_x
 # define OLD2					both->player.old_y
 # define LEVEL					both->drawing.height
@@ -103,6 +104,7 @@
 # define SPRITE_OLD_Y			both->drawing.sprite_old_y
 # define ENDING					both->schetchik.sprite_ending
 # define COUNTER_END			both->schetchik.counter_end
+# define MAP_START				both->schetchik.map_start
 
 typedef struct		s_mlx
 {
@@ -215,6 +217,7 @@ typedef	struct		s_counters
 	float			sprite_ending;
 	float			counter_end;
 	char			checker;
+	int				map_start;
 }					t_counters;
 
 typedef struct		s_both
@@ -250,7 +253,6 @@ int		key_release(int keycode, t_both *both);
 void	error_message(char *message, t_both *both);
 void	fill_map(t_both *both);
 void	parse_map(t_both *both);
-void	recieve_map(t_both *both);
 void	paint_square(int x, int y, t_data *img, int color);
 void	player_view(t_both *both);
 void	w_move(t_both *both);
@@ -286,5 +288,8 @@ float	draw_right(t_both *both, float another_one, float add);
 void	skip_steps(t_both *both, float *plus, float scale_texture);
 void	get_floor_sky_colors(t_both *both);
 int		find_start_pos(t_both *both, t_sprite_info *sprite);
+void	find_doubles(t_both *both);
+int		find_map(t_both *both);
+void	map_validator(t_both *both);
 
 #endif
