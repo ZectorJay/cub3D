@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 08:05:07 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 22:13:02 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 11:56:46 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	header(t_both *both, int fd)
 	int				add_bytes;
 
 	add_bytes = (4 - ((int)RES_X * 3) % 4) % 4;
-	printf("add bytes = %d\n", add_bytes);
 	if (!(img = (unsigned char *)malloc(3 * RES_X * RES_Y + 20)))
 		error_message("fail allocating memory for bmp", both);
 	filesize = 54 + 3 * RES_X * RES_Y;
@@ -82,7 +81,7 @@ void	make_screenshot2(t_both *both)
 		RES_X -= (RES_X % 4);
 	RES_Y -= 1;
 	if ((fd = open("screenshot.bmp", O_WRONLY |
-	O_CREAT, 0777 | O_TRUNC | O_APPEND)) < 0)
+	O_CREAT, 0755 | O_TRUNC | O_APPEND)) < 0)
 		error_message("fail to create .bmp", both);
 	header(both, fd);
 	write_in_bmp(both, fd);
@@ -96,7 +95,7 @@ void	make_screenshot(t_both *both)
 	int				fd;
 	
 	if ((fd = open("screenshot.bmp", O_WRONLY |
-	O_CREAT, 0777 | O_TRUNC | O_APPEND)) < 0)
+	O_CREAT, 0755 | O_TRUNC | O_APPEND)) < 0)
 		error_message("fail to create .bmp", both);
 	header(both, fd);
 	write_in_bmp(both, fd);

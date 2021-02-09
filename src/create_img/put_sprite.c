@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/06 14:40:15 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:21:45 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,18 @@ void	check_sprite(t_both *both, float len, float angle)
 		both->get_info[SP_COUNTER].y_hit = Y_STOP;
 		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2/MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].len = 0;
+		SPR_NUM[SP_COUNTER].len = sqrt
+		(pow(PX - (SPR_NUM[SP_COUNTER].x_hit * MINI_MAP_SCALE), 2) +
+		(pow(PY - (SPR_NUM[SP_COUNTER].y_hit * MINI_MAP_SCALE), 2))) / 10;
 		SPR_NUM[SP_COUNTER].av_len = malloc(sizeof(float) * RAYS);
 		both->get_info[SP_COUNTER].first_angle = angle;
 		both->get_info[SP_COUNTER].angle = angle;
 		both->get_info[SP_COUNTER].position = NUM;
 		both->get_info[SP_COUNTER].rays = 1;
 		SPR_NUM[SP_COUNTER].len_counter = 0;
+		// SPR_NUM[SP_COUNTER].start_pos = //find_start_pos(both, &SPR_NUM[SP_COUNTER]);
+		// printf("start pos = %d, visible start pos = %d\n",
+		// SPR_NUM[SP_COUNTER].start_pos, SPR_NUM[SP_COUNTER].position);
 		SP_COUNTER++;
 	}
 	find_sprite(both, angle, len);

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:23:56 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/04 06:38:50 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 16:25:06 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,6 @@ void	swap_sprites(t_both *both, int end, int i)
 		both->get_info[end].rays = tmp.rays;
 }
 
-void	make_avarage_len(t_both *both)
-{
-	int i;
-	int end;
-
-	end = -1;
-	while (SPR_NUM[++end].x_hit)
-	{
-		i = 0;
-		if(SPR_NUM[end].av_len[0] > 0)
-			SPR_NUM[end].len = SPR_NUM[end].av_len[i];
-		i++;
-		while (SPR_NUM[end].av_len[i] &&
-		SPR_NUM[end].av_len[i] < (SPR_NUM[end].av_len[i - 1] + 5)
-		&& SPR_NUM[end].av_len[i] > (SPR_NUM[end].av_len[i - 1] - 5))
-		{
-			SPR_NUM[end].len += SPR_NUM[end].av_len[i];
-			i++;
-		}
-		free(SPR_NUM[end].av_len);
-		SPR_NUM[end].len /= (float)i;
-	}
-}
-
 void	sort_sprite(t_both *both)
 {
 	int i;
@@ -94,4 +70,50 @@ void	sort_sprite(t_both *both)
 		if (i != 0)
 			swap_sprites(both, end, i);
 	}
+}
+
+static void	fix_params(t_both *both, float *c_cos, float *c_sin, int finder, t_sprite_info *sprite)
+{
+	SPRITE_OLD_X = PX + PLAYER_SCALE;
+	SPRITE_OLD_Y = PY + PLAYER_SCALE;
+	*c_cos = cos(sprite->first_angle - (FIX_ANGLE * finder));
+	*c_sin = sin(sprite->first_angle - (FIX_ANGLE * finder));
+
+}
+
+int	find_start_pos(t_both *both, t_sprite_info *sprite)
+{
+	float c_cos;
+	float c_sin;
+	int finder;	
+
+int	pidor = 0;
+
+
+	finder = sprite->position;
+	sprite->start_pos = sprite->position;
+	fix_params(both, &c_cos, &c_sin, finder, sprite);
+	printf("sprite_X - %d, sprite_Y = %d\n", sprite->x_hit, sprite->y_hit);
+	while (ft_strchr("102", KARTA[Y_STOP][X_STOP]))
+	{
+		pidor++;
+		SPRITE_OLD_X -= c_cos;
+		SPRITE_OLD_Y -= c_sin;
+		if(pidor % 300 == 0)
+		{
+			printf("X - %d, Y = %d\n", SPRITE_OLD_X/MINI_MAP_SCALE, SPRITE_OLD_Y/MINI_MAP_SCALE);
+			sleep(1);
+		}
+		if ((int)(((SPRITE_OLD_X - c_cos)/MINI_MAP_SCALE)) == (int)sprite->x_hit &&
+		(int)((SPRITE_OLD_Y - c_sin)/MINI_MAP_SCALE) == (int)sprite->y_hit)
+		{
+			printf("HUY\n");
+			sprite->start_pos--;
+			finder++;
+			if (finder > (sprite->position + MINI_MAP_SCALE))
+				break;
+			fix_params(both, &c_cos, &c_sin, finder, sprite);
+		}
+	}
+	return (sprite->start_pos);
 }

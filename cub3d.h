@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 18:55:43 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 18:27:00 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 ** CHANGABLE DEFINES
 */
 
-# define COLUMN_HEIGHT			5
+# define COLUMN_HEIGHT			9
 # define MINI_MAP_SCALE			160
-# define ROTATION_SPEED			4
+# define ROTATION_SPEED			3
 # define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
 # define SPEED_NORM				MINI_MAP_SCALE * 1
 # define DOUBLE_SPEED			SPEED_NORM * 1.5
@@ -99,6 +99,10 @@
 # define NORTH					both->north
 # define SOUTH					both->south
 # define SPRITE					both->sprite
+# define SPRITE_OLD_X			both->drawing.sprite_old_x
+# define SPRITE_OLD_Y			both->drawing.sprite_old_y
+# define ENDING					both->schetchik.sprite_ending
+# define COUNTER_END			both->schetchik.counter_end
 
 typedef struct		s_mlx
 {
@@ -139,6 +143,7 @@ typedef	struct		s_sprite_info
 	float			angle;
 	int				rays;
 	int				position;
+	int				start_pos;
 	int				len_counter;
 }					t_sprite_info;
 
@@ -156,6 +161,8 @@ typedef struct		s_drawing
 	int				height;
 	int				y_for_me;
 	int				x_for_me;
+	int				sprite_old_x;
+	int				sprite_old_y;
 	int				scale_for_me;
 	float			sprite_counter;
 }					t_drawing;
@@ -205,6 +212,8 @@ typedef	struct		s_counters
 	int				end;
 	int				floor_color;
 	int				sky_color;
+	float			sprite_ending;
+	float			counter_end;
 }					t_counters;
 
 typedef struct		s_both
@@ -264,7 +273,6 @@ void	clear_sprites(t_both *both);
 void	sprite3d(t_both *both, float another_one);
 void	sprite_changer(t_both *both);
 void	sort_sprite(t_both *both);
-void	make_avarage_len(t_both *both);
 void	check_sprite_row(t_both *both, float x, float y);
 void	swap_sprites(t_both *both, int end, int i);
 void	sprite_works(t_both *both);
@@ -276,5 +284,6 @@ float	draw_left(t_both *both, float another_one, float add);
 float	draw_right(t_both *both, float another_one, float add);
 void	skip_steps(t_both *both, float *plus, float scale_texture);
 void	get_floor_sky_colors(t_both *both);
+int		find_start_pos(t_both *both, t_sprite_info *sprite);
 
 #endif

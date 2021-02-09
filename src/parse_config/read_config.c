@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 13:27:01 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 12:01:42 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,15 @@ void	get_resolution(t_both *both)
 	if (TXT[j][0] != 'R')
 		error_message("No Resolution", both);
 	parse_resolution(TXT[j], both);
-	printf("RES_Y = %d\n", RES_Y);
-	if (RES_Y >= 1440)
-		mlx_get_screen_size(CONNECT, &SCREENSHOT_X, &RES_Y);
-	printf("RES_Y = %d\n", RES_Y);
-	printf("RES_X = %d\n", RES_X);
-	if (RES_X >= 2560)
-		mlx_get_screen_size(CONNECT, &RES_X, &SCREENSHOT_Y);
-	printf("RES_X = %d\n", RES_X);
+	mlx_get_screen_size(CONNECT, &SCREENSHOT_X, &SCREENSHOT_Y);
+	if (RES_X > SCREENSHOT_X)
+		RES_X = SCREENSHOT_X - 1;
+	if (RES_Y > SCREENSHOT_Y)
+		RES_Y = SCREENSHOT_Y - 1;
+	if (RES_X % 2 != 1)
+		RES_X -= 1;
+	if (RES_Y % 2 != 1)
+		RES_Y -= 1;
 	if (both->schetchik.save_flag && both->mlx.res_x >= 2550)
 		both->mlx.res_x = 2450;
 	both->mlx.half_res_y = both->mlx.res_y / 2;

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:15:03 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 14:38:29 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 18:20:36 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ float	fix_sprite(t_both *both)
 	OLD1 = PX + PLAYER_SCALE;
 	OLD2 = PY + PLAYER_SCALE;
 	len = 0;
-	C_COS = cos(SPR_NUM[SP_COUNTER].first_angle - (2 * FIX_ANGLE));
-	C_SIN = sin(SPR_NUM[SP_COUNTER].first_angle - (2 * FIX_ANGLE));
-	if (SPR_NUM[SP_COUNTER].position < 3)
+	C_COS = cos(SPR_NUM[SP_COUNTER].first_angle - (1 * FIX_ANGLE));
+	C_SIN = sin(SPR_NUM[SP_COUNTER].first_angle - (1 * FIX_ANGLE));
+	if (SPR_NUM[SP_COUNTER].position < 1)
 		return (MINI_MAP_SCALE);
 	while (KARTA[Y_STOP][X_STOP] != '1' && KARTA[Y_STOP][X_STOP])
 	{
@@ -29,7 +29,7 @@ float	fix_sprite(t_both *both)
 		OLD1 -= C_COS;
 		OLD2 -= C_SIN;
 		if (KARTA[Y_STOP][X_STOP] == '1')
-			if (len < SPR_NUM[SP_COUNTER].len)
+			if (len < SPR_NUM[SP_COUNTER].len - 10 && PRESS_ROT != -1)
 				return (MINI_MAP_SCALE);
 	}
 	return (0);

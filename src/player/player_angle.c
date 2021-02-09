@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 19:06:43 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 13:51:33 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static void		fix_params(t_both *both, int *number, int flag,
 
 void			sprite_works(t_both *both)
 {
-	make_avarage_len(both);
 	sort_sprite(both);
 	sprite_changer(both);
 }

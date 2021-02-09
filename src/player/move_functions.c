@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:08:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 12:24:24 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 18:04:36 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	w_move(t_both *both)
 	OLD2 = PY;
 	PX -= cos(PROT) * (SPEED / 10);
 	PY -= sin(PROT) * (SPEED / 10);
-	if (KARTA[YSTOP][XSTOP] != '0')
+	if (KARTA[YSTOP][XSTOP] == '1')
 	{
 		PX = OLD1;
 		PY = OLD2;
@@ -40,7 +40,7 @@ void	s_move(t_both *both)
 	OLD2 = PY;
 	PX += cos(PROT) * (SPEED / 10);
 	PY += sin(PROT) * (SPEED / 10);
-	if (KARTA[YSTOP][XSTOP] != '0')
+	if (KARTA[YSTOP][XSTOP] == '1')
 	{
 		PX = OLD1;
 		PY = OLD2;
@@ -53,7 +53,7 @@ void	a_move(t_both *both)
 	OLD2 = PY;
 	PY += cos(PROT) * (SPEED / 10);
 	PX -= sin(PROT) * (SPEED / 10);
-	if (KARTA[YSTOP][XSTOP] != '0')
+	if (KARTA[YSTOP][XSTOP] == '1')
 	{
 		PX = OLD1;
 		PY = OLD2;
@@ -66,7 +66,7 @@ void	d_move(t_both *both)
 	OLD2 = PY;
 	PY -= cos(PROT) * (SPEED / 10);
 	PX += sin(PROT) * (SPEED / 10);
-	if (KARTA[YSTOP][XSTOP] != '0')
+	if (KARTA[YSTOP][XSTOP] == '1')
 	{
 		PX = OLD1;
 		PY = OLD2;

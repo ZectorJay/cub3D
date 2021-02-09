@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/08 19:01:25 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/09 12:54:56 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	get_north(t_both *both)
 	skip_spaces(both, i, &both->north);
 	if (!(both->north.img = mlx_xpm_file_to_image(CONNECT,
 	both->north.path, &both->north.width, &both->north.height)))
-		error_message("idi v jope", both);
+		error_message("fail xpm file", both);
 	both->north.addr = mlx_get_data_addr(both->north.img,
 	&both->north.bits_per_pixel,
 	&both->north.line_length, &both->north.endian);
