@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/09 23:45:22 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/10 11:47:32 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ CC			= gcc
 
 RM			= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror 
+CFLAGS		= #-Wall -Wextra -Werror 
 
 FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit
 
@@ -65,7 +65,7 @@ FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit
 .PHONY:			all clean fclean re
 
 $(NAME):		${OBJS} ${INCLUDE} libft.a
-				@${CC} ${FRAME} ${OBJS} ./libft/libft.a -o ${NAME}
+				@${CC} ${FRAME} ${OBJS} ./libft/libft.a -o cub3D
 				
 
 libft.a:

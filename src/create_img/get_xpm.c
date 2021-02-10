@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 19:11:14 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 13:47:44 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	get_north(t_both *both)
 {
 	int i;
 
-	i = -1;
-	i = search_texture(both, 'N', 'O', i);
+	if ((i = search_texture(both, 'N', 'O', -1)) < 0)
+		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->north);
 	if (!(both->north.img = mlx_xpm_file_to_image(CONNECT,
 	both->north.path, &both->north.width, &both->north.height)))
@@ -60,8 +60,8 @@ void	get_south(t_both *both)
 {
 	int i;
 
-	i = -1;
-	i = search_texture(both, 'S', 'O', i);
+	if ((i = search_texture(both, 'S', 'O', -1)) < 0)
+		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->south);
 	if(!(both->south.img = mlx_xpm_file_to_image(CONNECT,
 	both->south.path, &both->south.width, &both->south.height)))
@@ -76,8 +76,8 @@ void	get_east(t_both *both)
 {
 	int i;
 
-	i = -1;
-	i = search_texture(both, 'E', 'A', i);
+	if ((i = search_texture(both, 'E', 'A', -1)) < 0)
+		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->east);
 	if (!(both->east.img = mlx_xpm_file_to_image(CONNECT,
 	both->east.path, &both->east.width, &both->east.height)))
@@ -92,8 +92,8 @@ void	get_west(t_both *both)
 {
 	int i;
 
-	i = -1;
-	i = search_texture(both, 'W', 'E', i);
+	if ((i = search_texture(both, 'W', 'E', -1)) < 0)
+		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->west);
 	if (!(both->west.img = mlx_xpm_file_to_image(CONNECT,
 	both->west.path, &both->west.width, &both->west.height)))
@@ -108,8 +108,8 @@ void	get_sprite(t_both *both)
 {
 	int i;
 
-	i = -1;
-	i = search_texture(both, 'S', ' ', i);
+	if ((i = search_texture(both, 'S', ' ', -1)) < 0)
+		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->sprite);
 	if (!(both->sprite.img = mlx_xpm_file_to_image(CONNECT,
 	both->sprite.path, &both->sprite.width, &both->sprite.height)))

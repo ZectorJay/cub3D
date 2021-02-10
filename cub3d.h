@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 23:36:10 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 13:01:42 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@
 # define ENDING					both->schetchik.sprite_ending
 # define COUNTER_END			both->schetchik.counter_end
 # define MAP_START				both->schetchik.map_start
+# define COLOR_STRING			both->schetchik.color_string
 
 typedef struct		s_mlx
 {
@@ -218,6 +219,8 @@ typedef	struct		s_counters
 	float			counter_end;
 	char			checker;
 	int				map_start;
+	char			*color_string;
+	int				flag;
 }					t_counters;
 
 typedef struct		s_both

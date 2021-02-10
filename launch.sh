@@ -1,2 +1,2 @@
 make
-./a.out maps/map.cub
+./cub3D maps/map.cub

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:12:14 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 22:00:07 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 13:49:45 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	look_for_trash(t_both *both)
 	while (TXT[++i] && i < MAP_START)
 	{
 		if ((ft_strchr("RNSWESFC\0", TXT[i][0])))
-		{
 			check_second_letter(both, *ft_strchr("RNSWESFC\0", TXT[i][0]), i);
-		}
 		else if (!(ft_strchr("RNSWESFC\0", TXT[i][0])))
 		{
 			ft_putstr("what is it? - ");

@@ -1,11 +1,11 @@
 R   1000       800
 
-NO	./pics/redbrick.xpm 
-SO  ./pics/purplestone.xpm 
+NO ./pics/redbrick.xpm 
+SO ./pics/purplestone.xpm 
 WE  ./pics/check.xpm 
 EA  ./pics/colorstone.xpm
 
-S ./pics/icecream.xpm
+S  ./pics/barrel.xpm
 F         220,100,0
 C 225,30,0
 

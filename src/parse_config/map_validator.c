@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:13:38 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 23:37:43 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 11:41:49 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	map_validator(t_both *both)
 
 	i = -1;
 	j = -1;
-	check_first_last_row(both, i + 1);
+	(void)both;
+	// check_first_last_row(both, i + 1);
 	// while (KARTA[++i])
 	// {
 	// 	j = -1;

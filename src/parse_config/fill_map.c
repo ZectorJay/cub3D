@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 23:15:05 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 13:19:23 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,8 @@ int		find_map(t_both *both)
 		j = -1;
 		if (ft_strchr("1 ", TXT[MAP_START][0]))
 			while (TXT[MAP_START][++j])
-			{
-				printf("found 1 or space at - %d row\n", MAP_START);
 				if (TXT[MAP_START][j] == '1')
 					return (MAP_START);
-			}
 	}
 	error_message("there is no map!!", both);
 	return (0);

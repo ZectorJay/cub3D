@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 23:38:10 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 13:19:59 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,37 @@ int		mix_colors(int red, int green, int blue)
 	return (color);
 }
 
-char	*get_num(t_both *both, char *color_string, int *color)
+int		get_num(t_both *both, int i, int *color)
 {
-	if (ft_isdigit(*color_string))
-		*color = ft_atoi(color_string);
+	if (ft_isdigit(COLOR_STRING[i]))
+		*color = ft_atoi(COLOR_STRING + i);
 	else
 		error_message("there is wrong symbol in color", both);
-	while (ft_isdigit(*color_string))
-		color_string++;
-	return (color_string);
+	while (ft_isdigit(COLOR_STRING[i]))
+		i++;
+	return (i);
 }
 
-void	parse_color(t_both *both, char *color_string, int *color)
+void	parse_color(t_both *both, int *color)
 {
 	int	red;
 	int	green;
 	int	blue;
-
-	color_string = get_num(both, color_string, &red);
-	if (*color_string == ',')
-		color_string++;
+	int i;
+	
+	i = 0;
+	i = get_num(both, i, &red);
+	if (COLOR_STRING[i] == ',')
+		i++;
 	else
 		error_message("wrong separate symbol", both);
-	color_string = get_num(both, color_string, &green);
-	if (*color_string == ',')
-		color_string++;
+	i = get_num(both, i, &green);
+	if (COLOR_STRING[i] == ',')
+		i++;
 	else
 		error_message("wrong separate symbol", both);
-	color_string = get_num(both, color_string, &blue);
-	check_leftovers(both, color_string);
+	i = get_num(both, i, &blue);
+	check_leftovers(both, COLOR_STRING + i);
 	if (red > 255 || green > 255 || blue > 255
 	|| red < 0 || green < 0 || blue < 0)
 		error_message("wrong number in color", both);
@@ -82,16 +84,14 @@ void	parse_color(t_both *both, char *color_string, int *color)
 void	find_color(t_both *both, int i, int *color)
 {
 	int j;
-	char *color_string;
 
-	j = 0;
+	j = 1;
 	while((TXT[i][j]) == ' ')
 		j++;
-	j += 2;
-	if (!(color_string = ft_strtrim(TXT[i] + j, WHITE_SPACE)))
+	if (!(COLOR_STRING = ft_strtrim(TXT[i] + j, " ")))
 		error_message("fail allocate memory for color", both);
-	parse_color(both, color_string, color);
-	free(color_string);
+	parse_color(both,color);
+	free(COLOR_STRING);
 }
 
 void	get_floor_sky_colors(t_both *both)
