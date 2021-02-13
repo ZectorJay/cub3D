@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 13:18:58 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 15:59:13 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef	struct		s_sprite_info
 {
 	float			len;
 	int				row_flag;
-	float			*av_len;
 	float			f_x_hit;
 	float			f_y_hit;
 	int				x_hit;
