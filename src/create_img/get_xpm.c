@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:47:44 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 15:31:08 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ void	get_south(t_both *both)
 	if(!(both->south.img = mlx_xpm_file_to_image(CONNECT,
 	both->south.path, &both->south.width, &both->south.height)))
 		error_message("fail xpm file", both);
-	both->south.addr = mlx_get_data_addr(both->south.img,
+	if (!(both->south.addr = mlx_get_data_addr(both->south.img,
 	&both->south.bits_per_pixel,
-	&both->south.line_length, &both->south.endian);
+	&both->south.line_length, &both->south.endian)))
+		error_message("fail getting address of texture", both);
 	get_color(&both->south);
 }
 
@@ -82,9 +83,10 @@ void	get_east(t_both *both)
 	if (!(both->east.img = mlx_xpm_file_to_image(CONNECT,
 	both->east.path, &both->east.width, &both->east.height)))
 		error_message("fail xpm file", both);
-	both->east.addr = mlx_get_data_addr(both->east.img,
+	if (!(both->east.addr = mlx_get_data_addr(both->east.img,
 	&both->east.bits_per_pixel,
-	&both->east.line_length, &both->east.endian);
+	&both->east.line_length, &both->east.endian)))
+		error_message("fail getting address of texture", both);
 	get_color(&both->east);
 }
 
@@ -98,9 +100,10 @@ void	get_west(t_both *both)
 	if (!(both->west.img = mlx_xpm_file_to_image(CONNECT,
 	both->west.path, &both->west.width, &both->west.height)))
 		error_message("fail xpm file", both);
-	both->west.addr = mlx_get_data_addr(both->west.img,
+	if (!(both->west.addr = mlx_get_data_addr(both->west.img,
 	&both->west.bits_per_pixel,
-	&both->west.line_length, &both->west.endian);
+	&both->west.line_length, &both->west.endian)))
+		error_message("fail getting address of texture", both);
 	get_color(&both->west);
 }
 
@@ -114,8 +117,9 @@ void	get_sprite(t_both *both)
 	if (!(both->sprite.img = mlx_xpm_file_to_image(CONNECT,
 	both->sprite.path, &both->sprite.width, &both->sprite.height)))
 		error_message("fail xpm file", both);
-	both->sprite.addr = mlx_get_data_addr(both->sprite.img,
+	if (!(both->sprite.addr = mlx_get_data_addr(both->sprite.img,
 	&both->sprite.bits_per_pixel,
-	&both->sprite.line_length, &both->sprite.endian);
+	&both->sprite.line_length, &both->sprite.endian)))
+		error_message("fail getting address of texture", both);
 	get_color(&both->sprite);
 }

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:48:34 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 15:40:54 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ int		get_x_res(char *res, t_both *both)
 	int i;
 
 	i = 0;
-	while (ft_isspace(res[++i]))
+	while (res[++i] == ' ')
 		;
-	if ((RES_X = ft_atoi(res + i)) == 0)
+	if ((RES_X = ft_atoi(res + i)) <= 0)
 		error_message("bad resolution", both);
 	i -= 1;
 	while (ft_isdigit(res[++i]))
 		if (!ft_isdigit(res[i]))
 			error_message("bad resolution", both);
 	i -= 1;
-	while (ft_isspace(res[++i]))
-		if (!ft_isspace(res[i]) && !ft_isdigit(res[i]))
+	while (res[++i] == ' ')
+		if (res[i] != ' ' && !ft_isdigit(res[i]))
 			error_message("something before Resolution_Y", both);
 	while (res[i])
 	{
-		if (!ft_isspace(res[i]) && !ft_isdigit(res[i]))
+		if (res[i] != ' ' && !ft_isdigit(res[i]))
 			error_message("letters in resolution", both);
 		if (ft_isdigit(res[i]))
 			break ;
@@ -65,27 +65,18 @@ void	get_resolution(t_both *both)
 {
 	int j;
 
-	j = 0;
-	while (TXT[j])
-	{
-		if (TXT[j][0] == 'R')
-			break ;
-		j++;
-	}
-	if (TXT[j][0] != 'R')
-		error_message("No Resolution", both);
+	if ((j = search_texture(both, 'R', ' ', -1)) < 0)
+		error_message("RESOLUTION NOT FOUND", both);
 	parse_resolution(TXT[j], both);
 	mlx_get_screen_size(CONNECT, &SCREENSHOT_X, &SCREENSHOT_Y);
 	if (RES_X > SCREENSHOT_X)
-		RES_X = SCREENSHOT_X - 1;
+		RES_X = SCREENSHOT_X;
 	if (RES_Y > SCREENSHOT_Y)
-		RES_Y = SCREENSHOT_Y - 1;
+		RES_Y = SCREENSHOT_Y;
 	if (RES_X % 2 != 1)
 		RES_X -= 1;
 	if (RES_Y % 2 != 1)
 		RES_Y -= 1;
-	if (both->schetchik.save_flag && both->mlx.res_x >= 2550)
-		both->mlx.res_x = 2450;
 	both->mlx.half_res_y = both->mlx.res_y / 2;
 	both->mlx.rays = RES_X / QUALITY;
 }

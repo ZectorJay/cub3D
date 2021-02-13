@@ -6,27 +6,24 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:19:59 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 15:30:18 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	check_leftovers(t_both *both, char *color_string)
+void	check_leftovers(t_both *both, int i)
 {
-	while (ft_isdigit(*color_string))
-		color_string++;
-	if (*color_string)
-		if (*color_string != ' ' || *color_string != '\0')
-			error_message("something come after colors", both);
-	if (*color_string)
-		while (*color_string == ' ' || *color_string == '\0')
+	if (COLOR_STRING[i] != ' ' || COLOR_STRING[i] != '\0')
+		error_message("something come after colors", both);
+	if (COLOR_STRING[i])
+		while (COLOR_STRING[i] == ' ' || COLOR_STRING[i] == '\0')
 		{
-			color_string++;
-			if (*color_string != ' ')
-				error_message("something is going after all 3 colors", both);
-			else if (*color_string == '\0')
+		COLOR_STRING[i]++;
+			if (COLOR_STRING[i] == '\0')
 				break ;
+			else if (COLOR_STRING[i] != ' ')
+				error_message("something is going after all 3 colors", both);
 		}
 }
 
@@ -46,7 +43,9 @@ int		mix_colors(int red, int green, int blue)
 
 int		get_num(t_both *both, int i, int *color)
 {
-	if (ft_isdigit(COLOR_STRING[i]))
+	if (!ft_isdigit(COLOR_STRING[i]))
+		error_message("where is number for color?", both);
+	if (COLOR_STRING[i] && ft_isdigit(COLOR_STRING[i]))
 		*color = ft_atoi(COLOR_STRING + i);
 	else
 		error_message("there is wrong symbol in color", both);
@@ -74,7 +73,8 @@ void	parse_color(t_both *both, int *color)
 	else
 		error_message("wrong separate symbol", both);
 	i = get_num(both, i, &blue);
-	check_leftovers(both, COLOR_STRING + i);
+	if (COLOR_STRING[i])
+		check_leftovers(both, i);
 	if (red > 255 || green > 255 || blue > 255
 	|| red < 0 || green < 0 || blue < 0)
 		error_message("wrong number in color", both);
@@ -98,9 +98,10 @@ void	get_floor_sky_colors(t_both *both)
 {
 	int	i;
 
-	i = -1;
-	i = search_texture(both, 'F', ' ', i);
+	if ((i = search_texture(both, 'F', ' ', -1)) < 0)
+		error_message("Color for FLOOR not found", both);
 	find_color(both, i, &both->schetchik.floor_color);
-	i = search_texture(both, 'C', ' ', i);
+	if ((i = search_texture(both, 'C', ' ', -1)) < 0)
+		error_message("Color for SKY not found", both);
 	find_color(both, i, &both->schetchik.sky_color);
 }

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 21:05:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:50:15 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 15:16:04 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ int		search_texture(t_both *both, char letter, char letter2, int i)
 	{
 		if (TXT[i][0] == letter && TXT[i][1] == letter2)
 			if((TXT[i][2]) == ' ' || letter2 == ' ')
-			{
 				return (i);
-			}
-		if (!TXT[i] && !TXT[i + 1])
-			return (-1);
 	}
 	return (-1);
 }

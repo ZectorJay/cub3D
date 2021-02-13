@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:01:42 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 13:18:58 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
 # define SPEED_NORM				MINI_MAP_SCALE * 1
 # define DOUBLE_SPEED			SPEED_NORM * 1.5
-# define RESIZE_SPRITE			1
 
 /*
 ** ANGLE - Player view angle. M_PI/3 = 60 degree

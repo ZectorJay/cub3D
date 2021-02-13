@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 16:03:08 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 16:50:41 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/10 18:25:58 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	error_message(char *message, t_both *both)
 {
 	if (!message)
 		message = "Good bye";
-	write(1, "ERROR\n", 6);
+	write(1, "Error\n", 6);
 	write(1, message, ft_strlen(message));
 	write(1, "\n", 1);
 	if (TXT[0][0])

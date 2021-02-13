@@ -6,20 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:08:04 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 18:04:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 12:23:16 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-/*
-**			АКТУАЛЬНО ДЛЯ: СЕВЕРА И ЗАПАДА
-** xstop				(int)(px + PLAYER_SCALE/5)/MINI_MAP_SCALE
-** ystop				(int)(py + PLAYER_SCALE/5)/MINI_MAP_SCALE
-**			АКТУАЛЬНО ДЛЯ: ЮГА И ВОСТОКА:
-** xstop				(int)(px - PLAYER_SCALE/5)/MINI_MAP_SCALE
-** ystop				(int)(py - PLAYER_SCALE/5)/MINI_MAP_SCALE
-*/
 
 void	w_move(t_both *both)
 {
