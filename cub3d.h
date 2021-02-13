@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 15:59:13 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 23:10:09 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 ** HIGHER QUALITY NUMBER - WORSE QUALITY OF PICTURE (AND FASTER GAME)
 */
 
-# define QUALITY				3
+# define QUALITY				1
 
 /*
 ** DONT TOUCH THOSE
