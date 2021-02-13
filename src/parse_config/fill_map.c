@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:19:23 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/13 17:40:51 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	check_dir(t_both *both, int j, int i)
 		PROT = M_PI_2;
 	PX = i * MINI_MAP_SCALE;
 	PY = j * MINI_MAP_SCALE;
-	KARTA[j][i] = '0';
 }
 
 void	fail_minimap(t_both *both, int j, int i)
@@ -52,10 +51,11 @@ void	get_minimap(t_both *both)
 	while (KARTA[j][++i])
 	{
 		if (ft_strchr("SWEN", KARTA[j][i]))
+		{
 			check_dir(both, j, i);
-		else if (KARTA[j][i] == ' ')
-			KARTA[j][i] = '1';
-		else if (!(ft_strchr("102", KARTA[j][i])))
+			KARTA[j][i] = '0';
+		}
+		else if (!(ft_strchr("102 ", KARTA[j][i])))
 			fail_minimap(both, j, i);
 		if (!KARTA[j][i + 1])
 		{

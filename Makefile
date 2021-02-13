@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/10 11:47:32 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/13 16:10:50 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ clean:
 				${RM} ${OBJS} ./libft/*.o
 
 fclean:			clean
-				${RM} ${NAME} ./libft/libft.a
+				${RM} ${NAME} ./libft/libft.a cub3D
 
 re:				fclean all
 
