@@ -6,26 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 13:27:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 15:30:18 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:28:53 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	check_leftovers(t_both *both, int i)
-{
-	if (COLOR_STRING[i] != ' ' || COLOR_STRING[i] != '\0')
-		error_message("something come after colors", both);
-	if (COLOR_STRING[i])
-		while (COLOR_STRING[i] == ' ' || COLOR_STRING[i] == '\0')
-		{
-		COLOR_STRING[i]++;
-			if (COLOR_STRING[i] == '\0')
-				break ;
-			else if (COLOR_STRING[i] != ' ')
-				error_message("something is going after all 3 colors", both);
-		}
-}
 
 int		mix_colors(int red, int green, int blue)
 {
@@ -60,7 +45,7 @@ void	parse_color(t_both *both, int *color)
 	int	green;
 	int	blue;
 	int i;
-	
+
 	i = 0;
 	i = get_num(both, i, &red);
 	if (COLOR_STRING[i] == ',')
@@ -86,11 +71,11 @@ void	find_color(t_both *both, int i, int *color)
 	int j;
 
 	j = 1;
-	while((TXT[i][j]) == ' ')
+	while ((TXT[i][j]) == ' ')
 		j++;
 	if (!(COLOR_STRING = ft_strtrim(TXT[i] + j, " ")))
 		error_message("fail allocate memory for color", both);
-	parse_color(both,color);
+	parse_color(both, color);
 	free(COLOR_STRING);
 }
 

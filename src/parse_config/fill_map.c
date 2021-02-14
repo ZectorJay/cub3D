@@ -6,19 +6,19 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 12:59:25 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:45:07 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	check_dir(t_both *both, int j, int i)
+void	check_dir(t_both *both, int j, int i, int *flag)
 {
 	char dir;
 
 	dir = *ft_strchr("SWEN", KARTA[j][i]);
 	if (ft_strchr("SWEN", dir) && PROT != 0)
-			error_message("Second player? WTF?", both);
+		error_message("Second player? WTF?", both);
 	if (dir == 'S')
 		PROT = 3 * M_PI_2;
 	else if (dir == 'W')
@@ -27,8 +27,11 @@ void	check_dir(t_both *both, int j, int i)
 		PROT = 2 * M_PI;
 	else if (dir == 'N')
 		PROT = M_PI_2;
+	check_around(both, j, i);
+	KARTA[j][i] = '0';
 	PX = i * MINI_MAP_SCALE;
 	PY = j * MINI_MAP_SCALE;
+	*flag = 1;
 }
 
 void	fail_minimap(t_both *both, int j, int i)
@@ -49,16 +52,11 @@ void	get_minimap(t_both *both)
 
 	flag = 0;
 	j = 0;
-	i =  -1;
+	i = -1;
 	while (KARTA[j][++i])
 	{
 		if (ft_strchr("SWEN", KARTA[j][i]))
-		{
-			flag = 1;
-			check_dir(both, j, i);
-			check_around(both, j, i);
-			KARTA[j][i] = '0';
-		}
+			check_dir(both, j, i, &flag);
 		else if (!(ft_strchr("102 ", KARTA[j][i])))
 			fail_minimap(both, j, i);
 		if (!KARTA[j][i + 1])

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 15:59:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:50:14 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	clear_sprites(t_both *both)
 		both->get_info[SP_COUNTER].x_hit = 0;
 		both->get_info[SP_COUNTER].y_hit = 0;
 		both->get_info[SP_COUNTER].len = 0;
-		both->get_info[SP_COUNTER].angle = 0;	
-		both->get_info[SP_COUNTER].rays = 0;	
+		both->get_info[SP_COUNTER].angle = 0;
+		both->get_info[SP_COUNTER].rays = 0;
 		both->get_info[SP_COUNTER].position = 0;
 		both->get_info[SP_COUNTER].f_x_hit = 0;
 		both->get_info[SP_COUNTER].f_y_hit = 0;
@@ -36,16 +36,16 @@ int		check_previous_sprites(t_both *both)
 	int counter;
 
 	counter = 0;
-	if(!SPR_NUM[counter].x_hit)
-		return(-1);
-	while(SPR_NUM[counter].x_hit)
+	if (!SPR_NUM[counter].x_hit)
+		return (-1);
+	while (SPR_NUM[counter].x_hit)
 	{
 		if (X_STOP == SPR_NUM[counter].x_hit)
 			if (Y_STOP == SPR_NUM[counter].y_hit)
-				return(counter);
+				return (counter);
 		counter++;
 	}
-	return(-1);
+	return (-1);
 }
 
 void	find_sprite(t_both *both, float angle, float len)
@@ -63,15 +63,15 @@ void	find_sprite(t_both *both, float angle, float len)
 
 void	check_sprite(t_both *both, float len, float angle)
 {
-	if(check_previous_sprites(both) == -1)
+	if (check_previous_sprites(both) == -1)
 	{
 		both->get_info[SP_COUNTER].x_hit = X_STOP;
-		both->get_info[SP_COUNTER].f_x_hit = (float)(OLD1/MINI_MAP_SCALE);
+		both->get_info[SP_COUNTER].f_x_hit = (float)(OLD1 / MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].y_hit = Y_STOP;
-		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2/MINI_MAP_SCALE);
+		both->get_info[SP_COUNTER].f_y_hit = (float)(OLD2 / MINI_MAP_SCALE);
 		both->get_info[SP_COUNTER].len = 0;
-		SPR_NUM[SP_COUNTER].len = sqrt
-		(pow(PX - (SPR_NUM[SP_COUNTER].x_hit * MINI_MAP_SCALE), 2) +
+		SPR_NUM[SP_COUNTER].len =
+		sqrt(pow(PX - (SPR_NUM[SP_COUNTER].x_hit * MINI_MAP_SCALE), 2) +
 		(pow(PY - (SPR_NUM[SP_COUNTER].y_hit * MINI_MAP_SCALE), 2))) / 10;
 		both->get_info[SP_COUNTER].first_angle = angle;
 		both->get_info[SP_COUNTER].angle = angle;

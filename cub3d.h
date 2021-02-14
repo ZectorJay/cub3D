@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 12:18:45 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:51:46 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 */
 
 # define COLUMN_HEIGHT			9
-# define MINI_MAP_SCALE			160
+# define MINI_MAP_SCALE			140
 # define ROTATION_SPEED			3
 # define PLAYER_SCALE			(int)(MINI_MAP_SCALE/3)
 # define SPEED_NORM				MINI_MAP_SCALE * 1
@@ -45,7 +45,7 @@
 ** HIGHER QUALITY NUMBER - WORSE QUALITY OF PICTURE (AND FASTER GAME)
 */
 
-# define QUALITY				1
+# define QUALITY				3
 
 /*
 ** DONT TOUCH THOSE
@@ -293,5 +293,8 @@ void	find_doubles(t_both *both);
 int		find_map(t_both *both);
 void	map_validator(t_both *both);
 void	check_around(t_both *both, int i, int j);
+void	fixx_params(t_both *both);
+void	check_leftovers(t_both *both, int i);
+void	get_color(t_sprite *data);
 
 #endif

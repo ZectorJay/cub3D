@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 08:05:07 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 11:56:46 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:47:15 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	write_in_bmp(t_both *both, int fd)
 				error_message("fail writing screenshot", both);
 			if (add_bytes > 0 && write(fd, &color, add_bytes) < 0)
 				error_message("fail writing screenshot", both);
-				DRAW_X++;
+			DRAW_X++;
 		}
 		DRAW_Y--;
 	}
@@ -93,7 +93,7 @@ void	make_screenshot2(t_both *both)
 void	make_screenshot(t_both *both)
 {
 	int				fd;
-	
+
 	if ((fd = open("screenshot.bmp", O_WRONLY |
 	O_CREAT, 0755 | O_TRUNC | O_APPEND)) < 0)
 		error_message("fail to create .bmp", both);
@@ -101,5 +101,5 @@ void	make_screenshot(t_both *both)
 	write_in_bmp(both, fd);
 	if (close(fd) < 0)
 		error_message("fail closing file", both);
-		make_screenshot2(both);
+	make_screenshot2(both);
 }

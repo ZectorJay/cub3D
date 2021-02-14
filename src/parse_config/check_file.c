@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 09:12:14 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/10 13:49:45 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:46:00 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	checker_of_doubles(t_both *both, char letter1, char letter2)
 	if ((i = search_texture(both, letter1, letter2, i)) == -1)
 		error_message("fail config (way to texture or color)", both);
 	if ((i = search_texture(both, letter1, letter2, i)) != -1)
-		error_message("found second same string", both);	
+		error_message("found second same string", both);
 }
 
 int		check_second_letter(t_both *both, char c, int i)
@@ -86,4 +86,3 @@ void	find_doubles(t_both *both)
 	checker_of_doubles(both, 'C', ' ');
 	look_for_trash(both);
 }
-

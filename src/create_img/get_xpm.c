@@ -6,39 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:52:53 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 15:31:08 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:55:47 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	get_color(t_sprite *data)
-{
-	float	x;
-	int		y;
-	char 	*dst;
-	int 	counter;
-	float	scale;
-	
-	float width = (float)data->width;
-	float mini_scale = (float)(MINI_MAP_SCALE);
-	scale = width / mini_scale;
-	x = 0;
-	counter = 0;
-	while ((int)x < data->width)
-	{
-		y = -1;
-		while (++y < data->height)
-		{
-			dst = (data->addr + ((int)y * data->line_length +
-			(int)x * (data->bits_per_pixel / 8)));
-			data->color_mass[counter][y] = *(unsigned int*)dst;
-		}
-		counter++;
-		x += scale;
-	}
-	data->color_mass[counter][0] = '\0';
-}
 
 void	get_north(t_both *both)
 {
@@ -63,7 +35,7 @@ void	get_south(t_both *both)
 	if ((i = search_texture(both, 'S', 'O', -1)) < 0)
 		error_message("NO TEXTURE", both);
 	skip_spaces(both, i, &both->south);
-	if(!(both->south.img = mlx_xpm_file_to_image(CONNECT,
+	if (!(both->south.img = mlx_xpm_file_to_image(CONNECT,
 	both->south.path, &both->south.width, &both->south.height)))
 		error_message("fail xpm file", both);
 	if (!(both->south.addr = mlx_get_data_addr(both->south.img,

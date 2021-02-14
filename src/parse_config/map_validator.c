@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:13:38 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 14:11:48 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:15:30 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		check_inside(t_both *both, char *row, int j)
 		error_message("map is not closed", both);
 	return (j - 1);
 }
-
 
 void	check_map_row(t_both *both, int i)
 {
@@ -85,9 +84,7 @@ void	map_validator(t_both *both)
 	{
 		j = -1;
 		while (KARTA[i][++j])
-		{
 			if (KARTA[i][j] == '0' || KARTA[i][j] == '2')
 				check_around(both, i, j);
-		}
 	}
 }

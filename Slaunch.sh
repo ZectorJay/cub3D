@@ -1,2 +1,2 @@
 make
-./a.out maps/map.cub --save
+./cub3D maps/map.cub --save
