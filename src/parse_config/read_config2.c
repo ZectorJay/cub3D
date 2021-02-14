@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:51:33 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 14:29:25 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 17:05:29 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,16 @@ void	fixx_params(t_both *both)
 	OLD2 = 0;
 	PROT = 0;
 	HIDE_MAP = 0;
+	SP_COUNTER = 0;
 	SCALER = RES_X / RAYS;
+	if (RES_X > SCREENSHOT_X)
+		RES_X = SCREENSHOT_X;
+	if (RES_Y > SCREENSHOT_Y)
+		RES_Y = SCREENSHOT_Y;
+	if (RES_X % 2 != 1)
+		RES_X -= 1;
+	if (RES_Y % 2 != 1)
+		RES_Y -= 1;
 }
 
 void	check_leftovers(t_both *both, int i)

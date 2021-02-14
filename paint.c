@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:51:30 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/07 12:20:33 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 16:23:34 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	my_pixel_put(t_data *data, int x, int y, int color)
 
 void	create_img(t_both *both, t_data *something, int size_x, int size_y)
 {
-	something->img = mlx_new_image(CONNECT, size_x, size_y);
-	something->addr = mlx_get_data_addr(something->img,
+	if (!(something->img = mlx_new_image(CONNECT, size_x, size_y)))
+		error_message("fail to create image", both);
+	if (!(something->addr = mlx_get_data_addr(something->img,
 	&something->bits_per_pixel, &something->line_length,
-	&something->endian);
+	&something->endian)))
+		error_message("fail to take address of image", both);
 }
 
 void	paint_square(int x, int y, t_data *img, int color)

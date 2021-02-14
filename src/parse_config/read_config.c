@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:57:22 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 14:17:22 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 17:03:42 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,6 @@ void	get_resolution(t_both *both)
 		error_message("RESOLUTION NOT FOUND", both);
 	parse_resolution(TXT[j], both);
 	mlx_get_screen_size(CONNECT, &SCREENSHOT_X, &SCREENSHOT_Y);
-	if (RES_X > SCREENSHOT_X)
-		RES_X = SCREENSHOT_X;
-	if (RES_Y > SCREENSHOT_Y)
-		RES_Y = SCREENSHOT_Y;
-	if (RES_X % 2 != 1)
-		RES_X -= 1;
-	if (RES_Y % 2 != 1)
-		RES_Y -= 1;
 	both->mlx.half_res_y = both->mlx.res_y / 2;
 	both->mlx.rays = RES_X / QUALITY;
 }

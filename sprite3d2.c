@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:15:03 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 18:20:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 16:21:58 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ float	draw_right(t_both *both, float another_one, float add)
 void	skip_steps(t_both *both, float *plus, float scale_texture)
 {
 	float diff;
-	
+
 	if (DRAW_Y <= 0)
 	{
 		diff = abs(DRAW_Y * QUALITY);
