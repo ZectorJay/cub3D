@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:58:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 15:04:56 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 17:45:25 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		check_previous_sprites(t_both *both)
 	return (-1);
 }
 
-void	find_sprite(t_both *both, float angle, float len)
+void	find_sprite(t_both *both, float angle)
 {
 	int counter;
 
@@ -59,7 +59,7 @@ void	find_sprite(t_both *both, float angle, float len)
 		}
 }
 
-void	check_sprite(t_both *both, float len, float angle)
+void	check_sprite(t_both *both, float angle)
 {
 	if (check_previous_sprites(both) == -1)
 	{
@@ -76,5 +76,5 @@ void	check_sprite(t_both *both, float len, float angle)
 		SPR_NUM[SP_COUNTER].len_counter = 0;
 		SP_COUNTER++;
 	}
-	find_sprite(both, angle, len);
+	find_sprite(both, angle);
 }

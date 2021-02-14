@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:10:23 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/09 13:51:33 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 17:45:47 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void			player_angle(t_both *both)
 			NUM++;
 		}
 		if (KARTA[Y_STOP][X_STOP] == '2')
-			check_sprite(both, len, PROT - (FIX_ANGLE * END));
+			check_sprite(both, PROT - (FIX_ANGLE * END));
 	}
 }

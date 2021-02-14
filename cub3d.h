@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 17:14:56 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 18:10:55 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,55 +244,57 @@ typedef struct		s_both
 	int				color;
 }					t_both;
 
-void	my_pixel_put(t_data *data, int x, int y, int color);
-void	paint_move(t_both *both);
-void	create_img(t_both *both, t_data *img, int size_x, int size_y);
-int		check_key(int keycode, t_both *both);
-int		key_release(int keycode, t_both *both);
-void	error_message(char *message, t_both *both);
-void	fill_map(t_both *both);
-void	parse_map(t_both *both);
-void	paint_square(int x, int y, t_data *img, int color);
-void	player_view(t_both *both);
-void	w_move(t_both *both);
-void	s_move(t_both *both);
-void	a_move(t_both *both);
-void	d_move(t_both *both);
-void	rotate_player(t_both *both);
-void	player_angle(t_both *both);
-void	try3d(t_both *both, float len);
-void	create_minimap(t_both *both);
-void	get_minimap(t_both *both);
-void	get_north(t_both *both);
-void	get_west(t_both *both);
-void	get_east(t_both *both);
-void	get_south(t_both *both);
-void	get_sprite(t_both *both);
-int		search_texture(t_both *both, char letter, char letter2, int i);
-void	skip_spaces(t_both *both, int i, t_sprite *name);
-void	check_sprite(t_both *both, float len, float angle);
-void	clear_sprites(t_both *both);
-void	sprite3d(t_both *both, float another_one);
-void	sprite_changer(t_both *both);
-void	sort_sprite(t_both *both);
-void	check_sprite_row(t_both *both, float x, float y);
-void	swap_sprites(t_both *both, int end, int i);
-void	sprite_works(t_both *both);
-void	make_screenshot(t_both *both);
-void	find_texture(t_both *both);
-int		check_file_name(char *file);
-float	fix_sprite(t_both *both);
-float	draw_left(t_both *both, float another_one, float add);
-float	draw_right(t_both *both, float another_one, float add);
-void	skip_steps(t_both *both, float *plus, float scale_texture);
-void	get_floor_sky_colors(t_both *both);
-int		find_start_pos(t_both *both, t_sprite_info *sprite);
-void	find_doubles(t_both *both);
-int		find_map(t_both *both);
-void	map_validator(t_both *both);
-void	check_around(t_both *both, int i, int j);
-void	fixx_params(t_both *both);
-void	check_leftovers(t_both *both, int i);
-void	get_color(t_sprite *data);
+void				my_pixel_put(t_data *data, int x, int y, int color);
+void				paint_move(t_both *both);
+void				create_img(t_both *both, t_data *img,
+					int size_x, int size_y);
+int					check_key(int keycode, t_both *both);
+int					key_release(int keycode, t_both *both);
+void				error_message(char *message, t_both *both);
+void				fill_map(t_both *both);
+void				parse_map(t_both *both);
+void				paint_square(int x, int y, t_data *img, int color);
+void				player_view(t_both *both);
+void				w_move(t_both *both);
+void				s_move(t_both *both);
+void				a_move(t_both *both);
+void				d_move(t_both *both);
+void				rotate_player(t_both *both);
+void				player_angle(t_both *both);
+void				try3d(t_both *both, float len);
+void				create_minimap(t_both *both);
+void				get_minimap(t_both *both);
+void				get_north(t_both *both);
+void				get_west(t_both *both);
+void				get_east(t_both *both);
+void				get_south(t_both *both);
+void				get_sprite(t_both *both);
+int					search_texture(t_both *both, char letter,
+					char letter2, int i);
+void				skip_spaces(t_both *both, int i, t_sprite *name);
+void				check_sprite(t_both *both, float angle);
+void				clear_sprites(t_both *both);
+void				sprite3d(t_both *both, float another_one);
+void				sprite_changer(t_both *both);
+void				sort_sprite(t_both *both);
+void				check_sprite_row(t_both *both, float x, float y);
+void				swap_sprites(t_both *both, int end, int i);
+void				sprite_works(t_both *both);
+void				make_screenshot(t_both *both);
+void				find_texture(t_both *both);
+int					check_file_name(char *file);
+float				fix_sprite(t_both *both);
+float				draw_left(t_both *both, float another_one, float add);
+float				draw_right(t_both *both, float another_one, float add);
+void				skip_steps(t_both *both, float *plus, float scale_texture);
+void				get_floor_sky_colors(t_both *both);
+int					find_start_pos(t_both *both, t_sprite_info *sprite);
+void				find_doubles(t_both *both);
+int					find_map(t_both *both);
+void				map_validator(t_both *both);
+void				check_around(t_both *both, int i, int j);
+void				fixx_params(t_both *both);
+void				check_leftovers(t_both *both, int i);
+void				get_color(t_sprite *data);
 
 #endif

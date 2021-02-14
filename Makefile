@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/14 12:17:54 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/14 18:05:04 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,30 +56,30 @@ CC			= gcc
 
 RM			= rm -f
 
-CFLAGS		= #-Wall -Wextra -Werror 
+CFLAGS		= -Wall -Wextra -Werror 
 
-FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit
+FRAME		= mlx/libmlx.a dylib/libmlx.dylib -framework OpenGL -framework AppKit ./libft/libft.a
 
 .c.o:		= ${CC} -g ${CFLAGS} -c $< -o ${<:.c=.o}
 
 
 .PHONY:			all clean fclean re
 
-$(NAME):		${OBJS} ${INCLUDE} libft.a
-				@${CC} ${FRAME} ${OBJS} ./libft/libft.a -o cub3D
-				
-
-libft.a:
-				@make -C ./libft/
+$(NAME):		${OBJS} ${INCLUDE}
+				@${MAKE} -C ./libft
+				@${MAKE} -C ./mlx
+				@${MAKE} -C ./dylib
+				@${CC} ${FRAME} ${OBJS} -o cub3D
 
 all:			${NAME}
 
 clean:
-				${RM} ${OBJS} ./libft/*.o
+				${RM} ${OBJS}
+				${MAKE} clean -C ./libft
+				${MAKE} clean -C ./mlx
+				${MAKE} clean -C ./dylib
 
 fclean:			clean
 				${RM} ${NAME} ./libft/libft.a cub3D
 
 re:				fclean all
-
-# gcc libmlx.a -framework OpenGL -framework AppKit *.c

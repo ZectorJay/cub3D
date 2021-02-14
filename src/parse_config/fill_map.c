@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 17:14:14 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 17:49:29 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void	get_minimap(t_both *both)
 	{
 		if (ft_strchr("SWEN", KARTA[j][i]))
 			check_dir(both, j, i, &flag);
-		else if (KARTA[j][i] == '2')
-			SP_COUNTER++;
-		else if (!(ft_strchr("10 ", KARTA[j][i])))
+		else if (!(ft_strchr("102 ", KARTA[j][i])))
 			fail_minimap(both, j, i);
 		if (!KARTA[j][i + 1])
 		{
