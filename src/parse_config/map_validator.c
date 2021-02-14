@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:13:38 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 12:18:51 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:11:48 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		check_inside(t_both *both, char *row, int j)
 	int flag;
 
 	flag = 0;
-	while(row[++j])
+	while (row[++j])
 	{
 		if (row[j] == '0')
 			flag = 1;
-		else if(row[j] == '2')
+		else if (row[j] == '2')
 			;
 		else if (row[j] == '1')
 		{
@@ -32,7 +32,6 @@ int		check_inside(t_both *both, char *row, int j)
 			;
 		else
 			error_message("map is not closed", both);
-		
 	}
 	if (flag == 1)
 		error_message("map is not closed", both);
@@ -55,9 +54,6 @@ void	check_map_row(t_both *both, int i)
 	}
 }
 
-
-
-
 void	check_close(t_both *both)
 {
 	int	j;
@@ -67,6 +63,12 @@ void	check_close(t_both *both)
 	i = -1;
 	while (KARTA[++i])
 	{
+		if (i == 0)
+		{
+			while (KARTA[i][++j])
+				if (!ft_strchr("1 \0", KARTA[i][j]))
+					error_message("map is not closed at top", both);
+		}
 		check_map_row(both, i);
 	}
 }
@@ -89,8 +91,3 @@ void	map_validator(t_both *both)
 		}
 	}
 }
-
-/*
-** Заполнить карту по самой длинной строчке - пробелами.
-** Иначе не сверят с "верхним - левым элементом"
-*/

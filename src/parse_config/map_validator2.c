@@ -6,15 +6,16 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 12:17:59 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/14 12:43:52 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 14:10:29 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-
 void	check_up_bot_left(t_both *both, int i, int j)
 {
+	if (i == 0)
+		error_message("map is not closed.", both);
 	if (j > ft_strlen(KARTA[i - 1]) + 1)
 		error_message("map is not closed.", both);
 	if (KARTA[i - 1][j - 1])
@@ -29,6 +30,8 @@ void	check_up_bot_left(t_both *both, int i, int j)
 
 void	check_up_bot_middle(t_both *both, int i, int j)
 {
+	if (i == 0)
+		error_message("map is not closed.", both);
 	if (j > ft_strlen(KARTA[i - 1]))
 		error_message("map is not closed.", both);
 	if (KARTA[i - 1][j])
@@ -41,8 +44,10 @@ void	check_up_bot_middle(t_both *both, int i, int j)
 			error_message("map is not closed", both);
 }
 
-void check_up_bot_right(t_both *both, int i, int j)
+void	check_up_bot_right(t_both *both, int i, int j)
 {
+	if (i == 0)
+		error_message("map is not closed.", both);
 	if (j >= ft_strlen(KARTA[i - 1]) - 1)
 		error_message("map is not closed.", both);
 	if (KARTA[i - 1][j + 1])
@@ -66,7 +71,6 @@ void	check_left_right(t_both *both, int i, int j)
 	}
 	else
 		error_message("map is not closed", both);
-
 }
 
 void	check_around(t_both *both, int i, int j)

@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:14:24 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 21:12:36 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 12:59:25 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,18 @@ void	get_minimap(t_both *both)
 {
 	int i;
 	int j;
+	int flag;
 
+	flag = 0;
 	j = 0;
 	i =  -1;
 	while (KARTA[j][++i])
 	{
 		if (ft_strchr("SWEN", KARTA[j][i]))
 		{
+			flag = 1;
 			check_dir(both, j, i);
+			check_around(both, j, i);
 			KARTA[j][i] = '0';
 		}
 		else if (!(ft_strchr("102 ", KARTA[j][i])))
@@ -65,6 +69,8 @@ void	get_minimap(t_both *both)
 		if (!KARTA[j])
 			break ;
 	}
+	if (flag == 0)
+		error_message("player not found", both);
 	map_validator(both);
 }
 
