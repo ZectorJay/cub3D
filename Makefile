@@ -6,7 +6,7 @@
 #    By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 15:52:53 by hmickey           #+#    #+#              #
-#    Updated: 2021/02/13 16:10:50 by hmickey          ###   ########.fr        #
+#    Updated: 2021/02/14 12:17:54 by hmickey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS		=	cub3d.c\
 				${PATH_CONF}read_config.c\
 				${PATH_CONF}read_config2.c\
 				${PATH_CONF}map_validator.c\
+				${PATH_CONF}map_validator2.c\
 				${PATH_CONF}fill_map.c\
 				${PATH_CONF}check_file.c\
 				${PATH_CONF}get_colors.c\

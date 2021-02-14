@@ -6,27 +6,11 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:13:38 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 23:21:12 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 12:18:51 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	check_around(t_both *both, int i, int j)
-{
-	if (KARTA[i][j] == '2' && j == 79)
-	printf("HAD TO CHECK - %c\n", KARTA[i - 1][j - 1]);
-	if (KARTA[i - 1][j - 1])
-		if (!ft_strchr(VALID_SYMBOLS, KARTA[i - 1][j - 1]))
-		{
-		// printf("I dont like - i[%d]j[%d] - %c (ASCII - %d)\n", i - 1, j - 1, KARTA[i - 1][j - 1], KARTA[i - 1][j - 1]);
-		error_message("map is not closed", both);
-	}
-	if (!KARTA[i - 1][j - 1])
-	{
-		error_message("map is not closed", both);
-	}
-}
 
 int		check_inside(t_both *both, char *row, int j)
 {

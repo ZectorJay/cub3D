@@ -6,7 +6,7 @@
 /*   By: hmickey <hmickey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 08:29:34 by hmickey           #+#    #+#             */
-/*   Updated: 2021/02/13 23:10:09 by hmickey          ###   ########.fr       */
+/*   Updated: 2021/02/14 12:18:45 by hmickey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,5 +292,6 @@ int		find_start_pos(t_both *both, t_sprite_info *sprite);
 void	find_doubles(t_both *both);
 int		find_map(t_both *both);
 void	map_validator(t_both *both);
+void	check_around(t_both *both, int i, int j);
 
 #endif
